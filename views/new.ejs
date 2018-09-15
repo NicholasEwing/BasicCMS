@@ -1,7 +1,7 @@
 <h1>New Blog Post</h1>
 
 <form action="/blogs" method="POST">
-	<input type="text" name="blog[title]" placeholder="title">
-	<input type="text" name="blog[body]" placeholder="blog post goes here">
+	<input type="text" name="blog[title]" placeholder="title" required>
+	<textarea rows="4" cols="50" name="blog[body]" placeholder="blog post goes here" required></textarea>
 	<input type="submit">
 </form>
