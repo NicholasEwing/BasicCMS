@@ -2,6 +2,13 @@
 
 <h1>This is the blogs page</h1>
 
+<% blogs.forEach(function(blog){ %>
+	<div>
+		<h2><%= blog.title %></h2>
+		<p><%= blog.body %></p>
+	</div>
+<% }) %>
+
 <a href="/blogs/new"><button>New Blog</button></a>
 
 <%- include('partials/footer') -%>

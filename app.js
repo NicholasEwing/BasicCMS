@@ -6,15 +6,29 @@ const app = express();
 
 mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
 mongoose.set("useCreateIndex", true);
+app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
+// blog schema
+let blogSchema = new mongoose.Schema({
+	title: {type: String, unique: true},
+	body: String,
+});
+
+let Blog = mongoose.model("Blog", blogSchema);
 
 app.get("/", function(req, res){
-	res.redirect("blogs");
-})
+	res.redirect("/blogs");
+});
 
 app.get("/blogs", function(req, res){
-	res.render("blog");
+	Blog.find({}, function(err, blogs){
+		if(err) {
+			console.log(err);
+		}
+
+		res.render("index", {blogs: blogs})
+	});
 });
 
 app.get("/blogs/new", function(req, res){
@@ -22,20 +36,13 @@ app.get("/blogs/new", function(req, res){
 });
 
 app.post("/blogs", function(req, res){
-	// some magic that adds the post to db
+	Blog.create(req.body.blog, function(err, newBlog){
+		if(err){
+			res.render("new");
+		}
+
+		res.redirect("blogs");
+	});
 });
-
-// blog schema
-let Blog = mongoose.model("Blog", {
-	title: { type: String, unique: true },
-	body: String,
-});
-
-// let firstPost = new Blog({
-// 	title: "This is the title",
-// 	body: "This is some body text."
-// });
-
-// firstPost.save();
 
 app.listen(3000, () => console.log("Server started on port 3000"));
