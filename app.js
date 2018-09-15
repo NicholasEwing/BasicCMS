@@ -45,16 +45,22 @@ app.post("/blogs", function(req, res){
 	});
 });
 
-// add show route
-
 app.get("/blogs/:id", function(req, res){
 	Blog.findById(req.params.id, function(err, foundBlog){
 		if(err){
 			res.redirect("/blogs")
 		}
-
 		res.render("show", {blog: foundBlog});
 	})
 });
+
+// add edit template
+// add update route
+// add destroy route
+// add error handling
+// add images to blog posts
+// sanitize input for blogs
+// add login system
+// add ability to comment
 
 app.listen(3000, () => console.log("Server started on port 3000"));
