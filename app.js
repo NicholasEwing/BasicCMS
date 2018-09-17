@@ -105,14 +105,20 @@ app.delete("/blogs/:id", function(req, res){
 	});
 });
 
-// add date created to blog posts
-// add images to blog posts
- //  add new form and ensure routes save image to db
- //  wipe mongodb and create new blogs
-// add proper error handling
 // add login system
+ // - need passport local
+ // - add oauth
+ // - add permissions, "admin" for posting, "user" for viewing/commenting etc.
+ // - give admin ability to grant other users admin privleges
+
 // add ability to comment, require associations
 
-// organize project structure, refactor, learn other best practices
+// add proper error handling
+
+// add security with helmet and other best practices
+
+// style with VANILLA css
+
+// organize project structure, refactor, apply other best practices
 
 app.listen(3000, () => console.log("Server started on port 3000"));
