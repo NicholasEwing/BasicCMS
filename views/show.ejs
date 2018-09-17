@@ -3,9 +3,7 @@
 <p><%= blog.body %></p>
 
 
-<form action="/blogs/<%= blog._id %>/edit" method="GET">
-	<button>Edit Blog</button>
-</form>
+<a href="/blogs/<%= blog._id %>/edit">Edit </a>
 
 
 <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
