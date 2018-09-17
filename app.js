@@ -80,9 +80,16 @@ app.put("/blogs/:id", function(req, res){
 	});
 });
 
-// add edit route
-// add update route
-// add update form
+app.delete("/blogs/:id", function(req, res){
+	Blog.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.send("Could not delete blog. Sorry.");
+		}
+
+		res.redirect("/blogs");
+	});
+});
+
 // add destroy route
 // add error handling
 // add images to blog posts
