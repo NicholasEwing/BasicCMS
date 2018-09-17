@@ -1,12 +1,17 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-
 const app = express();
 
-mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
+const mongoose = require("mongoose");
 mongoose.set("useCreateIndex", true);
+mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
+
+const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
+
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
+
 app.set("view engine", "ejs");
 
 // blog schema
@@ -65,8 +70,17 @@ app.get("/blogs/:id/edit", function(req, res){
 	});
 });
 
+app.put("/blogs/:id", function(req, res){
+	Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+		if(err){
+			res.redirect("/blogs");
+		}
+
+		res.redirect("/blogs/" + req.params.id);
+	});
+});
+
 // add edit route
-// add edit form
 // add update route
 // add update form
 // add destroy route
