@@ -54,8 +54,21 @@ app.get("/blogs/:id", function(req, res){
 	})
 });
 
-// add edit template
+app.get("/blogs/:id/edit", function(req, res){
+	Blog.findById(req.params.id, function(err, foundBlog){
+		if(err){
+			res.redirect("/blogs");
+		}
+
+		res.render("edit", {blog: foundBlog});
+
+	});
+});
+
+// add edit route
+// add edit form
 // add update route
+// add update form
 // add destroy route
 // add error handling
 // add images to blog posts
