@@ -19,7 +19,9 @@ mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
 // blog schema
 let blogSchema = new mongoose.Schema({
 	title: {type: String, unique: true},
+	image: String,
 	body: String,
+	created: {type: Date, default: Date.now}
 });
 
 let Blog = mongoose.model("Blog", blogSchema);
@@ -103,9 +105,14 @@ app.delete("/blogs/:id", function(req, res){
 	});
 });
 
+// add date created to blog posts
 // add images to blog posts
+ //  add new form and ensure routes save image to db
+ //  wipe mongodb and create new blogs
 // add proper error handling
 // add login system
 // add ability to comment, require associations
+
+// organize project structure, refactor, learn other best practices
 
 app.listen(3000, () => console.log("Server started on port 3000"));
