@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="A content management system node app by Nicholas Ewing.">
+	<meta name="keywords" content="NodeJS project, content management system, Nicholas Ewing">
+	<meta name="author" content="Nicholas Ewing">
 	<title>Blog CMS</title>
+	<!-- This base tag fixes a common Node JS error, allowing css sheets to connect properly -->
 	<base href="/">
 	<link rel="stylesheet" type="text/css" href="css/layout.css">
 </head>
 <body>
+	<header>
+		<div class="container">
+			<div id="branding">
+				<h1>Blog CMS</h1>
+			</div>
+			<nav>
+				<ul>
+					<li class="current"><a href="/">Home</a></li>
+					<li><a href="/">Login</a></li>
+					<li><a href="/">Register</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
