@@ -8,7 +8,7 @@
 			<p><%= blog.body.substring(0, 200) %>...</p>
 			<p>Created: <%= blog.created.toLocaleDateString("en-US", {
 				weekday: "long", year: "numeric", month: "short", day: "numeric"}) %></p>
-			<p><a href="/blogs/<%=blog._id%>">Read More</a></p>
+			<a class="button" href="/blogs/<%=blog._id%>">Read More</a>
 		</div>
 	</section>
 <% }) %>

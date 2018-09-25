@@ -14,6 +14,37 @@ body {
 	overflow: hidden;
 }
 
+.button {
+	display:inline-block;
+	padding:0.35em 1.2em;
+	border:0.1em solid #000000;
+	margin:0 0.3em 0.3em 0;
+	border-radius:0.12em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Arial',sans-serif;
+	font-weight:300;
+	color:#000000;
+	text-align:center;
+	transition: all 0.15s;
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(122, 122, 122, 0.75);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+ 	-moz-box-shadow:    1px 1px 1px 1px rgba(122, 122, 122, 0.75);  /* Firefox 3.5 - 3.6 */
+    box-shadow:         1px 1px 1px 1px rgba(122, 122, 122, 0.75);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.button:hover {
+	color:#FFFFFF;
+	background-color:#000000;
+}
+
+@media all and (max-width:30em) {
+.button {
+ 	display:block;
+ 	margin:0.4em auto;
+ }
+}
+
+
 ul {
 	margin: 0;
 	padding: 0;
@@ -27,13 +58,14 @@ img {
 /* Header */
 
 header {
-	background-color: #EDF7F2;
+	color: #fff;
+	background-color: #000;
 	min-height: 70px;
-	border-bottom: 2px solid #000;
+	/*border-bottom: 2px solid #000;*/
 }
 
 header a {
-	color: black;
+	color: white;
 	text-decoration: none;
 	text-transform: lowercase;
 }
@@ -59,7 +91,7 @@ header nav {
 }
 
 header .current a {
-	color: black;
+	color: white;
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -71,15 +103,24 @@ header a:hover {
 /* Featured Blogs */
 
 .featured-blogs {
-	background-color: #E0EDFF;
+	background-color: #ebfdff;
 	margin: 20px auto;
 	padding: 50px;
 	width: 60%;
-	border-radius: 50px;
+	border: 0.25px solid rgba(0, 230, 255, 0.49);
+	border-radius: 0.12em;
+	-webkit-box-shadow: 0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	-moz-box-shadow:    0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Firefox 3.5 - 3.6 */
+	box-shadow:         0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
 }
 
 .featured-blogs img {
 	float: right;
+}
+
+.featured-blogs p {
+	color: #333333;
 }
 
 /* CTA */
