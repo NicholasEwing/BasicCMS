@@ -4,6 +4,7 @@ body {
 	line-height: 1.5;
 	padding: 0;
 	margin: 0;
+	background-color: #f4f4f4;
 }
 
 /* Global */
@@ -103,7 +104,7 @@ header a:hover {
 /* Featured Blogs */
 
 .featured-blogs {
-	background-color: #ebfdff;
+	background-color: #fff;
 	margin: 20px auto;
 	padding: 50px;
 	width: 60%;
@@ -117,6 +118,8 @@ header a:hover {
 
 .featured-blogs img {
 	float: right;
+	margin-left: 1.5em;
+	margin-bottom: 1em;
 }
 
 .featured-blogs p {
