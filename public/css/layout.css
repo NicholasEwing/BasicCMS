@@ -15,6 +15,11 @@ body {
 	overflow: hidden;
 }
 
+/* I hate that this .button class isn't semantic.
+
+TODO: Change styling of "Read More" buttons to
+use an actual button tag instead of just <a>.*/
+
 .button {
 	display:inline-block;
 	padding:0.35em 1.2em;
@@ -98,9 +103,13 @@ header {
 }
 
 header a {
-	color: white;
+	color: #fff;
 	text-decoration: none;
-	text-transform: lowercase;
+}
+
+header a:hover {
+	color: #fff;
+	text-decoration: underline;
 }
 
 header li {
@@ -121,6 +130,12 @@ header #branding h1 {
 header nav {
 	float: right;
 	margin-top: 20px;
+}
+
+header nav a {
+	color: white;
+	text-decoration: none;
+	text-transform: lowercase;
 }
 
 header .current a {
@@ -164,8 +179,12 @@ header a:hover {
 	text-align: center;
 }
 
+#cta a {
+	text-decoration: none;
+	color: #fff;
+}
+
 #cta button {
-	/*font-size: 40px;*/
 	margin: 20px 0 20px 0;
 }
 
@@ -173,7 +192,6 @@ header a:hover {
 
 footer {
 	background-color: #828A95;
-	border-top: 2px solid black;
 	min-height: 70px;
 	color: white;
 }
