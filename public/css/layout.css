@@ -16,14 +16,9 @@ body {
 	overflow: hidden;
 }
 
-.container img {
-	/*position: absolute;*/
+.box {
+	text-align: center;
 }
-
-.container h1 {
-	display: inline-block;
-}
-
 
 /* I hate that this .button class isn't semantic.
 
@@ -163,9 +158,9 @@ header a:hover {
 	color: white;
 }
 
-/* Featured Blogs */
+/* Featured blog */
 
-.featured-blogs {
+.featured-blog {
 	background-color: #fff;
 	margin: 20px auto;
 	padding: 50px;
@@ -178,15 +173,13 @@ header a:hover {
 
 }
 
-.box {
-	text-align: center;
+.featured-blog img {
+	float: right;
+	margin-left: 3em;
+	/*text-align: center*/
 }
 
-.featured-blogs img {
-	
-}
-
-.featured-blogs p {
+.featured-blog p {
 	color: #333333;
 }
 
@@ -243,18 +236,19 @@ footer nav {
 	padding-top: 20px;
 }
 
-@media all and (max-width: 930px){
+@media all and (max-width: 1350px){
 
 	header #branding, 
 	header nav, 
 	header li,
 	footer nav,
 	footer li, 
-	.featured-blogs img {
+	.featured-blog img {
 		float: none;
 		text-align: center;
 		width: 100%;
 		height: auto;
+		margin-left: auto;
 	}
 }
 
