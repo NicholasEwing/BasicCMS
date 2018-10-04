@@ -16,6 +16,10 @@ body {
 	overflow: hidden;
 }
 
+.container img {
+	/*position: absolute;*/
+}
+
 .container h1 {
 	display: inline-block;
 }
@@ -174,10 +178,12 @@ header a:hover {
 
 }
 
+.box {
+	text-align: center;
+}
+
 .featured-blogs img {
-	float: right;
-	margin-left: 1.5em;
-	margin-bottom: 1em;
+	
 }
 
 .featured-blogs p {
@@ -238,12 +244,14 @@ footer nav {
 }
 
 @media all and (max-width: 930px){
+
 	header #branding, 
 	header nav, 
 	header li,
 	footer nav,
 	footer li, 
 	.featured-blogs img {
+		float: none;
 		text-align: center;
 		width: 100%;
 		height: auto;

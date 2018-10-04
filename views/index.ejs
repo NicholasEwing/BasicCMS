@@ -3,7 +3,9 @@
 <% blogs.forEach(function(blog){ %>
 	<section id="featured">
 		<div class="container featured-blogs">
-			<img src="<%= blog.image %>">
+			<div class="box">
+				<img src="<%= blog.image %>">
+			</div>
 			<h1><%= blog.title %></h1>
 			<p><%= blog.body.substring(0, 200) %>...</p>
 			<p>Created: <%= blog.created.toLocaleDateString("en-US", {
