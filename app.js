@@ -29,6 +29,9 @@ app.get("/", function(req, res){
 
 app.use("/blogs", blogRoutes);
 
+
+// preserve line breaks in blog input
+
 // create user schema
 
 // add ability to comment, requires db associations
