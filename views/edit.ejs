@@ -1,12 +1,19 @@
 <%- include('partials/header') -%>
 
-<h1>Edit <%= blog.title %></h1>
+<h1 id="edit-title">Edit Blog</h1>
 
-<form method="POST" action="/blogs/<%= blog._id %>?_method=PUT">
-	<input type="text" name="blog[title]" value="<%= blog.title %>">
-	<input type="text" name="blog[image]" value="<%= blog.image %>">
-	<textarea name="blog[body]"><%= blog.body %></textarea>
-	<input type="submit">
-</form>
+<div class="container" id="edit">
+
+	<form method="POST" action="/blogs/<%= blog._id %>?_method=PUT">
+		<label for="title">Title:</label>
+		<input id="title" type="text" name="blog[title]" value="<%= blog.title %>">
+		<label for="image-url">Image URL:</label>
+		<input id="image-url" type="text" name="blog[image]" value="<%= blog.image %>">
+		<label for="body">Body:</label>
+		<textarea id="body" name="blog[body]"><%= blog.body %></textarea>
+		<input class="button" type="submit">
+	</form>
+
+</div>
 
 <%- include('partials/footer') -%>

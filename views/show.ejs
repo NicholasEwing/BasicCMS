@@ -13,12 +13,12 @@
 			weekday: "long", year: "numeric", month: "short", day: "numeric"}) %>
 		</p>
 
-		<button>
-			<a href="/blogs/<%= blog._id %>/edit">Edit</a>
-		</button>
+		<form action="/blogs/<%= blog._id %>/edit" method="GET">
+			<button class="button">Edit</button>
+		</form>
 
 		<form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-			<button>Delete Blog</button>
+			<button class="button">Delete Blog</button>
 		</form>
 	</div>
 </section>
