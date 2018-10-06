@@ -1,11 +1,12 @@
 body {
 	position: relative;
+	box-sizing: border-box;
 	min-height: 100%;
 	min-height: 100vh;
 	font-family: sans-serif;
 	font-size: 20px;
 	line-height: 1.5;
-	padding: 0;
+	padding-bottom: 70px;
 	margin: 0;
 	background-color: #f4f4f4;
 }
@@ -215,12 +216,11 @@ header a:hover {
 
 footer {
 	position: absolute;
-	right: 0;
 	bottom: 0;
-	left: 0;
 	background-color: #828A95;
 	min-height: 70px;
 	color: white;
+	width: 100%;
 }
 
 footer a {
