@@ -1,10 +1,22 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const methodOverride = require("method-override");
-const expressSanitizer = require("express-sanitizer");
+const express 					= require("express");
+const mongoose 					= require("mongoose");
+const passport 					= require("passport");
+const bodyParser 				= require("body-parser");
+const LocalStrategy 			= require("passport-local");
+const expressSession 			= require("express-session");
+const methodOverride 			= require("method-override");
+const expressSanitizer 			= require("express-sanitizer");
+const passportLocalMongoose 	= require("passport-local-mongoose");
+
+// add passport, passport-local, passport-local-mongoose, and express-session
 
 const app = express();
+
+app.use(expressSession({
+	secret: "this secret is totally going to appear on github",
+	resave: false,
+	saveUninitialized: false
+}))
 
 let blogRoutes = require("./routes/blogs");
 
@@ -16,10 +28,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Enables express-sanitizer, must come after app.use(bodyParser).
 app.use(expressSanitizer());
 
+// Initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 mongoose.set("useCreateIndex", true);
 mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
 
 let Blog = require("./models/blog");
+let User = require("./models/user");
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // RESTFUL ROUTES
 
@@ -27,10 +47,19 @@ app.get("/", function(req, res){
 	res.redirect("/blogs");
 });
 
+app.get("/secret", function(req, res){
+	res.render("secret");
+})
+
 app.use("/blogs", blogRoutes);
 
+// AUTH ROUTES
 
-// preserve line breaks in blog input
+// show register form
+app.get("/register")
+
+// show login form
+app.get("/login")
 
 // create user schema
 
