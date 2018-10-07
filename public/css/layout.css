@@ -49,7 +49,7 @@ use an actual button tag instead of just <a>.*/
 }
 
 
-.button:hover {
+.button:hover, .button:focus {
 	color:#FFFFFF;
 	background-color:#000000;
 }
@@ -172,15 +172,19 @@ header a:hover {
 	font-size: 1em;
 }
 
-#new_blog {
+#blog-body {
+	white-space: pre-wrap;
+}
+
+#new-blog-button {
 	font-size: 1.5rem;
 }
 
-#edit-title {
+#blog-input-title {
 	text-align: center;
 }
 
-#edit form input[type="submit"] {
+#blog-input form input[type="submit"] {
 	display: block;
 	width: 80%;
 	margin: 0 auto;
@@ -188,7 +192,7 @@ header a:hover {
 	font-size: 1.15rem;
 }
 
-#edit form input[type="text"], label {
+#blog-input form input[type="text"], label {
 	display: block;
 	width: 80%;
 	margin: 0 auto;
@@ -196,7 +200,7 @@ header a:hover {
 	font-size: 1.15rem;
 } 
 
-#edit form textarea {
+#blog-input form textarea {
 	display: block;
 	min-height: 30vh;
 	width: 80%;

@@ -1,9 +1,9 @@
 <%- include('partials/header') -%>
 
-<h1 id="edit-title">Edit Blog</h1>
 
-<div class="container" id="edit">
+<div class="container" id="blog-input">
 
+	<h1 id="blog-input-title">Edit Blog</h1>
 	<form method="POST" action="/blogs/<%= blog._id %>?_method=PUT">
 		<label for="title">Title:</label>
 		<input id="title" type="text" name="blog[title]" value="<%= blog.title %>">

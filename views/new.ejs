@@ -1,12 +1,18 @@
 <%- include('partials/header') -%>
 
-<h1>New Blog Post</h1>
+<div class="container" id="blog-input">
 
-<form action="/blogs" method="POST">
-	<input type="text" name="blog[title]" placeholder="title" required>
-	<input type="text" name="blog[image]" placeholder="image URL">
-	<textarea rows="4" cols="50" name="blog[body]" placeholder="blog post goes here" required></textarea>
-	<input type="submit">
-</form>
+	<h1 id="blog-input-title">New Blog Post</h1>
+	<form action="/blogs" method="POST">
+		<label for="title">Title:</label>
+		<input id="title" type="text" name="blog[title]" placeholder="Title" required">
+		<label for="image-url">Image URL:</label>
+		<input id="image-url" type="text" name="blog[image]" placeholder="image-url">
+		<label for="body">Body:</label>
+		<textarea id="body" name="blog[body]">Insert Blog Content Here</textarea>
+		<input class="button" type="submit">
+	</form>
+
+</div>
 
 <%- include('partials/footer') -%>
