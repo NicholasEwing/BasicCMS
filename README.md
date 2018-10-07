@@ -17,10 +17,10 @@ Technologies used:
 
 TODO:
 
-// add ability to register, login, logout
- // - add register feature
- // - add login feature
- // - add logout feature
+* add ability to register, login, logout
+  * add register feature
+  * add login feature
+  * add logout feature
  
 // add ability to comment, requires db associations
  // - add oauth
