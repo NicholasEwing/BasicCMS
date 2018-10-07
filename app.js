@@ -6,9 +6,7 @@ const LocalStrategy 			= require("passport-local");
 const expressSession 			= require("express-session");
 const methodOverride 			= require("method-override");
 const expressSanitizer 			= require("express-sanitizer");
-const passportLocalMongoose 	= require("passport-local-mongoose");
-
-// add passport, passport-local, passport-local-mongoose, and express-session
+const passportLocalMongoose     = require("passport-local-mongoose");
 
 const app = express();
 
