@@ -14,3 +14,22 @@ Technologies used:
 * Express / EJS
 * MongoDB / Mongoose
 * Heroku
+
+TODO:
+
+* add ability to register, login, logout
+  * add register feature
+  * add login feature
+  * add logout feature
+ 
+* add ability to comment, requires db associations
+ * add permissions, "admin" for posting, "user" for viewing/commenting etc.
+ * give admin ability to grant other users admin privleges 
+
+* add proper error handling
+
+* add security with helmet and other best practices
+
+* organize project structure, refactor, apply other best practices
+
+* move node modules into .gitignore
