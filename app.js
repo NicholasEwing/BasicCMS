@@ -36,6 +36,7 @@ mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
 let Blog = require("./models/blog");
 let User = require("./models/user");
 
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -46,7 +47,7 @@ app.get("/", function(req, res){
 });
 
 app.get("/secret", function(req, res){
-	res.render("secret");
+	res.render("secret")
 })
 
 app.use("/blogs", blogRoutes);
@@ -54,10 +55,36 @@ app.use("/blogs", blogRoutes);
 // AUTH ROUTES
 
 // show register form
-app.get("/register")
+app.get("/register", function(req, res){
+	res.render("register");
+});
+
+// handling user sign up
+app.post("/register", function(req, res){
+	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+		if(err){
+			console.log(err);
+			return res.render("register");
+		} else {
+			passport.authenticate("local")(req, res, function(){
+				res.redirect("/secret");
+			});
+		}
+	});
+});
 
 // show login form
-app.get("/login")
+app.get("/login", function(req, res){
+	res.render("login")
+});
+
+// login logic
+app.post("/login", passport.authenticate("local", {
+	successRedirect: "/secret",
+	failureRedirect: "/login"
+}), function(req, res){
+
+});
 
 // create user schema
 

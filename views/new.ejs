@@ -1,13 +1,13 @@
 <%- include('partials/header') -%>
 
-<div class="container" id="blog-input">
+<div class="container form-input">
 
-	<h1 id="blog-input-title">New Blog Post</h1>
+	<h1 class="form-input-title">New Blog Post</h1>
 	<form action="/blogs" method="POST">
 		<label for="title">Title:</label>
-		<input id="title" type="text" name="blog[title]" placeholder="Title" required">
+		<input id="title" type="text" name="blog[title]" placeholder="Ex: My First Blog Post" required">
 		<label for="image-url">Image URL:</label>
-		<input id="image-url" type="text" name="blog[image]" placeholder="image-url">
+		<input id="image-url" type="text" name="blog[image]" placeholder='Ex: "http://somereallylongurl.com/gallery/dog.jpg"'>
 		<label for="body">Body:</label>
 		<textarea id="body" name="blog[body]">Insert Blog Content Here</textarea>
 		<input class="button" type="submit">

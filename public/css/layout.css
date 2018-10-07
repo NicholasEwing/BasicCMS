@@ -173,11 +173,14 @@ header a:hover {
 	font-size: 1.5rem;
 }
 
-#blog-input-title {
+.form-input-title {
 	text-align: center;
 }
 
-#blog-input form input[type="submit"] {
+.form-input form input[type="text"],
+.form-input form input[type="submit"],
+.form-input form input[type="password"],
+label {
 	display: block;
 	width: 80%;
 	margin: 0 auto;
@@ -185,15 +188,12 @@ header a:hover {
 	font-size: 1.15rem;
 }
 
-#blog-input form input[type="text"], label {
-	display: block;
-	width: 80%;
-	margin: 0 auto;
-	margin-bottom: 1rem;
-	font-size: 1.15rem;
-} 
+#auth-form form input {
+	width: 30%;
+	line-height: 1.5rem;
+}
 
-#blog-input form textarea {
+.form-input form textarea {
 	display: block;
 	min-height: 30vh;
 	width: 80%;
