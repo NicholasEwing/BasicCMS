@@ -8,6 +8,17 @@ const methodOverride 			= require("method-override");
 const expressSanitizer 			= require("express-sanitizer");
 const passportLocalMongoose     = require("passport-local-mongoose");
 
+// Routes
+let blogRoutes = require("./routes/blogs");
+
+// Models
+let Blog = require("./models/blog");
+let User = require("./models/user");
+
+// SeedDB
+seedDB = require("./seeds");
+seedDB();
+
 const app = express();
 
 app.use(expressSession({
@@ -15,8 +26,6 @@ app.use(expressSession({
 	resave: false,
 	saveUninitialized: false
 }))
-
-let blogRoutes = require("./routes/blogs");
 
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
@@ -30,12 +39,11 @@ app.use(expressSanitizer());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Connect MongoDB
 mongoose.set("useCreateIndex", true);
 mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
 
-let Blog = require("./models/blog");
-let User = require("./models/user");
-
+// Configure passport-local
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -46,7 +54,7 @@ app.get("/", function(req, res){
 	res.redirect("/blogs");
 });
 
-app.get("/secret", function(req, res){
+app.get("/secret", isLoggedIn ,function(req, res){
 	res.render("secret")
 })
 
@@ -86,26 +94,17 @@ app.post("/login", passport.authenticate("local", {
 
 });
 
-// create user schema
+// logout logic
+app.get("/logout", function(req, res){
+	req.logout();
+	res.redirect("/");
+});
 
-// add ability to comment, requires db associations
- // - add oauth
- // - add permissions, "admin" for posting, "user" for viewing/commenting etc.
- // - give admin ability to grant other users admin privleges
-
-// add login system
- // - need passport local
-
-// polish log-in system
- // - add oauth
- // - add permissions, 
-
-// add proper error handling
-
-// add security with helmet and other best practices
-
-// style with VANILLA css
-
-// organize project structure, refactor, apply other best practices
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
 
 app.listen(3000, () => console.log("Server started on port 3000"));

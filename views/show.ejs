@@ -1,6 +1,5 @@
 <%- include('partials/header') -%>
 
-
 <section>
 	<div class="container" id="blog">
 		<div class="box">
@@ -12,6 +11,15 @@
 			Created: <%= blog.created.toLocaleDateString("en-US", {
 			weekday: "long", year: "numeric", month: "short", day: "numeric"}) %>
 		</p>
+
+		<% blog.comments.forEach(function(comment){ %>
+			<div>
+				<p><strong>Comment:</strong></p>
+				<p><%= comment.text %></p>
+				<p><strong>Author: </strong></p>
+				<p><%= comment.author %></p>
+			</div>
+		<% }); %>
 
 		<form action="/blogs/<%= blog._id %>/edit" method="GET">
 			<button class="button">Edit</button>

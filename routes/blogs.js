@@ -37,12 +37,12 @@ router.post("/", function(req, res){
 
 // SHOW ROUTE
 router.get("/:id", function(req, res){
-	Blog.findById(req.params.id, function(err, foundBlog){
+	Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
 		if(err){
 			res.redirect("/blogs")
 		}
 		res.render("show", {blog: foundBlog});
-	})
+	});
 });
 
 // EDIT ROUTE

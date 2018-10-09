@@ -5,7 +5,13 @@ let blogSchema = new mongoose.Schema({
 	title: {type: String, unique: true},
 	image: String,
 	body: String,
-	created: {type: Date, default: Date.now}
+	created: {type: Date, default: Date.now},
+	comments: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Comment"
+		}
+	]
 });
 
 let Blog = mongoose.model("Blog", blogSchema);
