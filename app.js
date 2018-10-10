@@ -10,9 +10,12 @@ const passportLocalMongoose     = require("passport-local-mongoose");
 
 // Routes
 let blogRoutes = require("./routes/blogs");
+let commentRoutes = require("./routes/comments");
 
-// Models
-let Blog = require("./models/blog");
+// Not yet working!
+// let authRoutes = require("./routes/auth");
+
+// Models - this + authRoutes need to be moved into separate files when refactoring
 let User = require("./models/user");
 
 // SeedDB
@@ -26,6 +29,8 @@ app.use(expressSession({
 	resave: false,
 	saveUninitialized: false
 }))
+
+let path = require("path");
 
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
@@ -58,7 +63,9 @@ app.get("/secret", isLoggedIn ,function(req, res){
 	res.render("secret")
 })
 
+// Referencing route files, need to refactor auth as well
 app.use("/blogs", blogRoutes);
+app.use("/blogs/:id/comments", commentRoutes);
 
 // AUTH ROUTES
 

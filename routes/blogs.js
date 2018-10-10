@@ -14,13 +14,13 @@ router.get("/", function(req, res){
 			console.log(err);
 		}
 
-		res.render("index", {blogs: blogs})
+		res.render("blogs/index", {blogs: blogs})
 	});
 });
 
 // NEW ROUTE
 router.get("/new", function(req, res){
-	res.render("new");
+	res.render("blogs/new");
 });
 
 // CREATE ROUTE
@@ -28,10 +28,10 @@ router.post("/", function(req, res){
 	req.body.blog.body = req.sanitize(req.body.blog.body);
 	Blog.create(req.body.blog, function(err, newBlog){
 		if(err){
-			res.render("new");
+			res.render("blogs/new");
 		}
 
-		res.redirect("blogs");
+		res.redirect("/blogs");
 	});
 });
 
@@ -41,7 +41,7 @@ router.get("/:id", function(req, res){
 		if(err){
 			res.redirect("/blogs")
 		}
-		res.render("show", {blog: foundBlog});
+		res.render("blogs/show", {blog: foundBlog});
 	});
 });
 
@@ -52,7 +52,7 @@ router.get("/:id/edit", function(req, res){
 			res.redirect("/blogs");
 		}
 
-		res.render("edit", {blog: foundBlog});
+		res.render("blogs/edit", {blog: foundBlog});
 
 	});
 });
