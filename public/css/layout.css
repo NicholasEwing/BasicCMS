@@ -165,6 +165,10 @@ header a:hover {
 	font-size: 1em;
 }
 
+.comment-form input {
+	width: 25%;
+}
+
 #blog-body {
 	white-space: pre-wrap;
 }
@@ -186,6 +190,16 @@ label {
 	margin: 0 auto;
 	margin-bottom: 1rem;
 	font-size: 1.15rem;
+}
+
+.form-input form label,
+.form-input form input.comment-form,
+.form-input form textarea.comment-form {
+	width: 45%;
+}
+
+.form-input form textarea.comment-form {
+	min-height: 10vh;
 }
 
 #auth-form form input {

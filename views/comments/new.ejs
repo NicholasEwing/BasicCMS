@@ -1,5 +1,15 @@
 <%- include('../partials/header') -%>
 
-<h1>This is a comment form!!!!</h1>
+<div class="container form-input">
+
+	<h1 class="form-input-title">New Comment: <%= blog.text %></h1>
+	<form action="/blogs/<%= blog._id %>/comments" method="POST">
+		<label class="comment-form" for="comment">Comment:</label>
+		<textarea class="comment-form" id="comment" name="comment[text]" required>Insert Comment Here!</textarea>
+		<!-- <input class="comment-form" id="comment" type="text" required"> -->
+		<input class="button comment-form" type="submit">
+	</form>
+
+</div>
 
 <%- include('../partials/footer') -%>
