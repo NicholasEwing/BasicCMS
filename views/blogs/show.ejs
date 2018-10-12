@@ -12,13 +12,17 @@
 			weekday: "long", year: "numeric", month: "short", day: "numeric"}) %>
 		</p>
 
+		<p><strong>Comments:</strong></p>
+
 		<% blog.comments.forEach(function(comment){ %>
-			<div>
-				<p><strong>Comment:</strong></p>
-				<p><%= comment.text %></p>
-				<p><strong>Author: </strong></p>
-				<p><%= comment.author %></p>
-			</div>
+			<section>
+				<div class="comments">
+					<!-- <p><strong>Comment:</strong></p> -->
+					<p><strong><%= comment.author %>:</strong></p>
+					<p><%= comment.text %></p>
+					<!-- <p><strong>Author: </strong></p> -->
+				</div>
+			</section>
 		<% }); %>
 
 		<form action="/blogs/<%= blog._id %>/edit" method="GET">
@@ -27,6 +31,10 @@
 
 		<form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
 			<button class="button">Delete Blog</button>
+		</form>
+
+		<form action="/blogs/<%= blog._id %>/comments/new" method="GET">
+			<button class="button">New Comment</button>
 		</form>
 	</div>
 </section>

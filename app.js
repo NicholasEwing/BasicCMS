@@ -59,7 +59,7 @@ app.get("/", function(req, res){
 	res.redirect("/blogs");
 });
 
-app.get("/secret", isLoggedIn ,function(req, res){
+app.get("/secret", isLoggedIn, function(req, res){
 	res.render("secret")
 })
 
