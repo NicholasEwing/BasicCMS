@@ -15,21 +15,27 @@ Technologies used:
 * MongoDB / Mongoose
 * Heroku
 
-TODO:
-
-* add ability to register, login, logout
-  * add register feature
-  * add login feature
-  * add logout feature
- 
-* add ability to comment, requires db associations
- * add permissions, "admin" for posting, "user" for viewing/commenting etc.
- * give admin ability to grant other users admin privleges 
-
-* add proper error handling
-
-* add security with helmet and other best practices
-
-* organize project structure, refactor, apply other best practices
-
-* move node modules into .gitignore
+# TODO:
+	* CLEAN UP:
+		* make isLoggedIn / isAdmin DRY
+		* refactor auth routes
+		* refactor index routes
+		* make logging in return user to previous page
+		* put filler info in footer links
+	* AUTH:
+		* associate comments with users (DONE)
+		* have user page, shows all comments and blogs they made
+		* add permissions, "admin" for posting and "user" for viewing (DONE)
+	* ERRORS:
+		* add actual error handling!
+		* create 404 page
+	* SECURITY:
+		* add helmet and follow other best practices
+		* try to post from POSTMAN
+		* sanitize comments, ensure line breaks work in comments
+	* WISHLIST:
+		* handle profanity, inappropriate images, inappropriate names, etc
+		* lint code
+		* minify code
+		* unit testing
+		* ensure 100% test coverage

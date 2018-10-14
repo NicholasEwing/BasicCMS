@@ -129,30 +129,4 @@ function isAdmin(req, res, next){
 	res.send("YOU'RE NOT AN ADMIN!");
 }
 
-// TODO:
-	// CLEAN UP:
-		// make isLoggedIn / isAdmin DRY
-		// refactor auth routes
-		// refactor index routes
-		// make logging in return user to previous page
-		// put filler info in footer links
-	// AUTH:
-		// associate comments with users
-		// have user page, shows all comments and blogs they made
-		// add permissions, "admin" for posting and "user" for viewing (DONE)
-		// give admin ability to grant admin permissions
-	// ERRORS:
-		// add actual error handling!
-		// create 404 page
-	// SECURITY:
-		// add helmet and follow other best practices
-		// try to post from POSTMAN
-		// sanitize comments, ensure line breaks work in comments
-	// WISHLIST:
-		// handle profanity, inappropriate images, inappropriate names, etc
-		// lint code
-		// minify code
-		// unit testing
-		// ensure 100% test coverage
-
 app.listen(3000, () => console.log("Server started on port 3000"));
