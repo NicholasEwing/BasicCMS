@@ -5,7 +5,7 @@ const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 
 // require login middleware for all routes
-router.get("/new", function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
 	Blog.findById(req.params.id, function(err, blog){
 		if(err){
 			console.log(err);
@@ -16,7 +16,7 @@ router.get("/new", function(req, res){
 });
 
 router.post("/", function(req, res){
-	Blog.findById(req.params.id, function(err, blog){
+	Blog.findById(req.params.id, isLoggedIn, function(err, blog){
 		if(err){
 			console.log(err);
 			res.redirect("/blogs");
@@ -34,12 +34,13 @@ router.post("/", function(req, res){
 		}
 	});
 });
-	// blog findbyid
-	// create comment
-		// push comments
-		// save blog
-		// redirect
 
-
+// This function is repeated. Please refactor.
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
 
 module.exports = router;

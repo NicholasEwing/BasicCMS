@@ -44,6 +44,11 @@ app.use(expressSanitizer());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+})
+
 // Connect MongoDB
 mongoose.set("useCreateIndex", true);
 mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
@@ -113,5 +118,27 @@ function isLoggedIn(req, res, next){
 	}
 	res.redirect("/login");
 }
+
+// TODO:
+	// CLEAN UP:
+		// make isLoggedIn DRY
+		// refactor auth routes
+		// refactor index routes
+		// make logging in return user to previous page
+		// put filler info in footer links
+	// AUTH:
+		// associate comments with users
+		// get login/logout buttons to hide & show properly
+		// have user page, shows all comments and blogs they made
+		// add permissions, "admin" for posting and "user" for viewing
+		// give admin ability to grant admin permissions
+	// ERRORS:
+		// add actual error handling!
+		// create 404 page
+	// SECURITY:
+		// add helmet and follow other best practices
+		// try to post from POSTMAN
+	// WISHLIST:
+		// handle profanity, inappropriate images, inappropriate names, etc
 
 app.listen(3000, () => console.log("Server started on port 3000"));

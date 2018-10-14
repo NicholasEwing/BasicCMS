@@ -9,12 +9,13 @@ let Blog = require("../models/blog");
 
 // INDEX ROUTE
 router.get("/", function(req, res){
+	console.log(req.user);
 	Blog.find({}, function(err, blogs){
 		if(err) {
 			console.log(err);
 		}
 
-		res.render("blogs/index", {blogs: blogs})
+		res.render("blogs/index", {blogs: blogs});
 	});
 });
 
