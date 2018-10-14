@@ -23,11 +23,6 @@ body {
 	text-align: center;
 }
 
-/* I hate that this .button class isn't semantic.
-
-TODO: Change styling of "Read More" buttons to
-use an actual button tag instead of just <a>.*/
-
 .button {
 	display:inline-block;
 	cursor: pointer;
@@ -143,11 +138,14 @@ header a:hover {
 
 /* New blog button */
 
-#cta {
-	text-align: center;
+#center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-#cta button {
+#new-blog-button {
 	font-size: 1.5rem;
 }
 
@@ -168,9 +166,6 @@ header a:hover {
 	white-space: pre-wrap;
 }
 
-#new-blog-button {
-	font-size: 1.5rem;
-}
 
 /*Comments*/
 

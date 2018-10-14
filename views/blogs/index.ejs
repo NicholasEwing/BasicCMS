@@ -15,9 +15,19 @@
 	</section>
 <% }) %>
 
+<!-- If there are no blogs, center the "New Blog" button and display help text. -->
+<div class="box" <% if (blogs.length === 0) {%> id="center" <% }%>>
+	<% if(blogs.length === 0) { %>
+		<h1>Looks like you don't have any blogs. Get started:</h1>
+	<% } %>
+	<form action="/blogs/new" method="GET">
+		<button class="button" id="new-blog-button">New Blog</button>
+	</form>
+</div>
+<!-- 
 <div class="container" id="cta">
 	<a href="/blogs/new" class="button" id="new-blog-button">New Blog</a>
-</div>
+</div> -->
 
 
 <%- include('../partials/footer') -%>

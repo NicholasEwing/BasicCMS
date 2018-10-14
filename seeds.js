@@ -48,40 +48,40 @@ function seedDB(){
 
 		console.log("removed blogs");
 
-		// Add new blogs
-		blogData.forEach(function(seed){
-			Blog.create(seed, function(err, blog){
-				if(err) {
-					console.log(err);
-				} else {
-					console.log("Added new blog");
+		// // Add new blogs
+		// blogData.forEach(function(seed){
+		// 	Blog.create(seed, function(err, blog){
+		// 		if(err) {
+		// 			console.log(err);
+		// 		} else {
+		// 			console.log("Added new blog");
 
-					// commentData.forEach(function(seed){
-					// 	Comment.create(seed, function(err, comment){
-					// 		if(err) {
-					// 			console.log(err);
-					// 		} else {
-					// 			blog.comments.push(comment);
-					// 			console.log("Created new comment");
-					// 		}
-					// 	});
-					// });
-					Comment.create(
-						{
-							text: "This is a GREAT blog post!",
-							author: "TestUser1234"
-						}, function(err, comment){
-							if (err){
-								console.log(err)
-							} else {
-								blog.comments.push(comment);
-								blog.save();
-								console.log("Created new comment!");
-							}
-						});
-				}
-			});
-		});
+		// 			// commentData.forEach(function(seed){
+		// 			// 	Comment.create(seed, function(err, comment){
+		// 			// 		if(err) {
+		// 			// 			console.log(err);
+		// 			// 		} else {
+		// 			// 			blog.comments.push(comment);
+		// 			// 			console.log("Created new comment");
+		// 			// 		}
+		// 			// 	});
+		// 			// });
+		// 			Comment.create(
+		// 				{
+		// 					text: "This is a GREAT blog post!",
+		// 					author: "TestUser1234"
+		// 				}, function(err, comment){
+		// 					if (err){
+		// 						console.log(err)
+		// 					} else {
+		// 						blog.comments.push(comment);
+		// 						blog.save();
+		// 						console.log("Created new comment!");
+		// 					}
+		// 				});
+		// 		}
+		// 	});
+		// });
 	});
 
 }
