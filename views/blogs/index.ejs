@@ -8,7 +8,7 @@
 			</div>
 			<h1><%= blog.title %></h1>
 			<p><%= blog.body.substring(0, 200) %>...</p>
-			<p>Created: <%= blog.created.toLocaleDateString("en-US", {
+			<p>Created by: <%= blog.author.username %> on <%= blog.created.toLocaleDateString("en-US", {
 				weekday: "long", year: "numeric", month: "short", day: "numeric"}) %></p>
 			<a class="button" href="/blogs/<%=blog._id%>">Read More</a>
 		</div>
@@ -24,10 +24,5 @@
 		<button class="button" id="new-blog-button">New Blog</button>
 	</form>
 </div>
-<!-- 
-<div class="container" id="cta">
-	<a href="/blogs/new" class="button" id="new-blog-button">New Blog</a>
-</div> -->
-
 
 <%- include('../partials/footer') -%>

@@ -147,6 +147,7 @@ function isAdmin(req, res, next){
 	// SECURITY:
 		// add helmet and follow other best practices
 		// try to post from POSTMAN
+		// sanitize comments, ensure line breaks work in comments
 	// WISHLIST:
 		// handle profanity, inappropriate images, inappropriate names, etc
 		// lint code

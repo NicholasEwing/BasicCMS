@@ -29,9 +29,15 @@ router.post("/", isAdmin, function(req, res){
 	Blog.create(req.body.blog, function(err, newBlog){
 		if(err){
 			res.render("blogs/new");
+		} else {
+			// add username / id to blog, refactor using object
+			newBlog.author.id = req.user._id;
+			newBlog.author.username = req.user.username;
+			newBlog.save();
+			console.log(newBlog);
+			res.redirect("/blogs");
 		}
 
-		res.redirect("/blogs");
 	});
 });
 

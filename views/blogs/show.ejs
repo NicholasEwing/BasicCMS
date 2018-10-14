@@ -8,7 +8,7 @@
 		<h1><%= blog.title %></h1>
 		<p id="blog-body"><%= blog.body %></p>
 		<p>
-			Created: <%= blog.created.toLocaleDateString("en-US", {
+			Created by: <%= blog.author.username %> on <%= blog.created.toLocaleDateString("en-US", {
 			weekday: "long", year: "numeric", month: "short", day: "numeric"}) %>
 		</p>
 
