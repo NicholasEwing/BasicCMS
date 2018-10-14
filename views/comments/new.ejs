@@ -4,14 +4,14 @@
 
 	<h1 class="form-input-title">New Comment: <%= blog.text %></h1>
 	<form action="/blogs/<%= blog._id %>/comments" method="POST">
-		<label class="comment-form" for="author">Author:</label>
-		<input class="comment-form" type="text" id="author" name="comment[author]" required>
+<!-- 		<label class="comment-form" for="author">Author:</label>
+		<input class="comment-form" type="text" id="author" name="comment[author]" required> -->
 		<label class="comment-form" for="comment">Comment:</label>
 		<!-- Study the comment[text] syntax, does this come from express or mongoose? -->
 		<textarea class="comment-form" id="comment" name="comment[text]" required>Insert Comment Here!</textarea>
 		<!-- <input class="comment-form" id="comment" type="text" required"> -->
 		<input class="button comment-form" type="submit">
-		<p><a href="/blogs/<%= blog._id %>">Go Back</a></p>
+		<p class="comment-form"><a href="/blogs/<%= blog._id %>">Go Back</a></p>
 	</form>
 
 </div>

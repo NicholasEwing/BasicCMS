@@ -202,7 +202,8 @@ label {
 	font-size: 1.15rem;
 }
 
-.form-input form label,
+.form-input form p.comment-form,
+.form-input form label.comment-form,
 .form-input form input.comment-form,
 .form-input form textarea.comment-form {
 	width: 45%;
@@ -224,7 +225,7 @@ label {
 }
 
 .form-input form p {
-	width: 45%;
+	width: 80%;
 	margin: auto;
 	color: gray;
 }

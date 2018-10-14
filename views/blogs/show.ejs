@@ -22,8 +22,7 @@
 				</div>
 			</section>
 		<% }); %>
-
-		<% console.log(locals) %>
+		
 		<% if(currentUser && currentUser.isAdmin){ %>
 		<form action="/blogs/<%= blog._id %>/edit" method="GET">
 			<button class="button">Edit</button>

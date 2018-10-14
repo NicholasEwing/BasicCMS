@@ -18,9 +18,9 @@ let commentRoutes = require("./routes/comments");
 // Models - this + authRoutes need to be moved into separate files when refactoring
 let User = require("./models/user");
 
-// SeedDB
+// Seed the database
 seedDB = require("./seeds");
-seedDB();
+// seedDB();
 
 const app = express();
 
@@ -149,5 +149,9 @@ function isAdmin(req, res, next){
 		// try to post from POSTMAN
 	// WISHLIST:
 		// handle profanity, inappropriate images, inappropriate names, etc
+		// lint code
+		// minify code
+		// unit testing
+		// ensure 100% test coverage
 
 app.listen(3000, () => console.log("Server started on port 3000"));
