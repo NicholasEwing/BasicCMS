@@ -44,6 +44,7 @@ app.use(expressSanitizer());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Pass user data to all pages
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
 	next();
@@ -64,8 +65,8 @@ app.get("/", function(req, res){
 	res.redirect("/blogs");
 });
 
-app.get("/secret", isLoggedIn, function(req, res){
-	res.render("secret")
+app.get("/secret", isAdmin, function(req, res){
+	res.render("secret");
 })
 
 // Referencing route files, need to refactor auth as well
@@ -112,6 +113,8 @@ app.get("/logout", function(req, res){
 	res.redirect("/");
 });
 
+// these middleware functions repeat themselves, please refactor
+
 function isLoggedIn(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
@@ -119,18 +122,24 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
+function isAdmin(req, res, next){
+	if(req.isAuthenticated() && req.user.isAdmin) {
+		return next();
+	}
+	res.send("YOU'RE NOT AN ADMIN!");
+}
+
 // TODO:
 	// CLEAN UP:
-		// make isLoggedIn DRY
+		// make isLoggedIn / isAdmin DRY
 		// refactor auth routes
 		// refactor index routes
 		// make logging in return user to previous page
 		// put filler info in footer links
 	// AUTH:
 		// associate comments with users
-		// get login/logout buttons to hide & show properly
 		// have user page, shows all comments and blogs they made
-		// add permissions, "admin" for posting and "user" for viewing
+		// add permissions, "admin" for posting and "user" for viewing (DONE)
 		// give admin ability to grant admin permissions
 	// ERRORS:
 		// add actual error handling!

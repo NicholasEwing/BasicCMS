@@ -15,8 +15,8 @@ router.get("/new", isLoggedIn, function(req, res){
 	});
 });
 
-router.post("/", function(req, res){
-	Blog.findById(req.params.id, isLoggedIn, function(err, blog){
+router.post("/", isLoggedIn, function(req, res){
+	Blog.findById(req.params.id, function(err, blog){
 		if(err){
 			console.log(err);
 			res.redirect("/blogs");
