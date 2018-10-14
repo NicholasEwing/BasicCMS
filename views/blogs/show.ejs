@@ -17,7 +17,7 @@
 		<% blog.comments.forEach(function(comment){ %>
 			<section>
 				<div class="comments">
-					<p><strong><%= comment.author %>:</strong></p>
+					<p><strong><%= comment.author.username %>:</strong></p>
 					<p><%= comment.text %></p>
 				</div>
 			</section>
