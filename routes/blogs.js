@@ -1,8 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const methodOverride = require("method-override");
-
 const router = express.Router();
 
 let Blog = require("../models/blog");
@@ -34,7 +30,6 @@ router.post("/", isAdmin, function(req, res){
 			newBlog.author.id = req.user._id;
 			newBlog.author.username = req.user.username;
 			newBlog.save();
-			console.log(newBlog);
 			res.redirect("/blogs");
 		}
 

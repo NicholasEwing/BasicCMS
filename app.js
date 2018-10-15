@@ -9,6 +9,7 @@ const expressSanitizer 			= require("express-sanitizer");
 const passportLocalMongoose     = require("passport-local-mongoose");
 
 // Routes
+let indexRoutes = require("./routes/index");
 let blogRoutes = require("./routes/blogs");
 let commentRoutes = require("./routes/comments");
 
@@ -59,59 +60,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// RESTFUL ROUTES
-
-app.get("/", function(req, res){
-	res.redirect("/blogs");
-});
-
-app.get("/secret", isAdmin, function(req, res){
-	res.render("secret");
-})
-
 // Referencing route files, need to refactor auth as well
+app.use(indexRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/blogs/:id/comments", commentRoutes);
-
-// AUTH ROUTES
-
-// show register form
-app.get("/register", function(req, res){
-	res.render("register");
-});
-
-// handling user sign up
-app.post("/register", function(req, res){
-	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-		if(err){
-			console.log(err);
-			return res.render("register");
-		} else {
-			passport.authenticate("local")(req, res, function(){
-				res.redirect("/secret");
-			});
-		}
-	});
-});
-
-// show login form
-app.get("/login", function(req, res){
-	res.render("login")
-});
-
-// login logic
-app.post("/login", passport.authenticate("local", {
-	successRedirect: "/secret",
-	failureRedirect: "/login"
-}), function(req, res){
-
-});
-
-// logout logic
-app.get("/logout", function(req, res){
-	req.logout();
-	res.redirect("/");
-});
 
 // these middleware functions repeat themselves, please refactor
 
