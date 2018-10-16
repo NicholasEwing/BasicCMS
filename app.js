@@ -12,11 +12,9 @@ const passportLocalMongoose     = require("passport-local-mongoose");
 let indexRoutes = require("./routes/index");
 let blogRoutes = require("./routes/blogs");
 let commentRoutes = require("./routes/comments");
+let userRoutes = require("./routes/users");
 
-// Not yet working!
-// let authRoutes = require("./routes/auth");
 
-// Models - this + authRoutes need to be moved into separate files when refactoring
 let User = require("./models/user");
 
 // Seed the database
@@ -60,10 +58,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Referencing route files, need to refactor auth as well
+// Routes
 app.use(indexRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/blogs/:id/comments", commentRoutes);
+app.use("/users", userRoutes);
 
 // these middleware functions repeat themselves, please refactor
 

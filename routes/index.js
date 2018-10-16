@@ -2,12 +2,13 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
+let User = require("../models/user");
+
 // RESTFUL ROUTES
 
 router.get("/", function(req, res){
 	res.redirect("/blogs");
 });
-
 
 // AUTH ROUTES
 
@@ -24,7 +25,7 @@ router.post("/register", function(req, res){
 			return res.render("register");
 		} else {
 			passport.authenticate("local")(req, res, function(){
-				res.redirect("/secret");
+				res.redirect("/blogs");
 			});
 		}
 	});

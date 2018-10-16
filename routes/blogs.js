@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 let Blog = require("../models/blog");
+let User = require("../models/user");
 
 // INDEX ROUTE
 router.get("/", function(req, res){
@@ -30,6 +31,12 @@ router.post("/", isAdmin, function(req, res){
 			newBlog.author.id = req.user._id;
 			newBlog.author.username = req.user.username;
 			newBlog.save();
+			User.findById(req.user._id, function(err, user){
+				console.log(user);
+				user.blogs.push(newBlog);
+				user.save();
+				console.log(user);
+			})
 			res.redirect("/blogs");
 		}
 
