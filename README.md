@@ -18,13 +18,13 @@ Technologies used:
 # TODO:
 	* CLEAN UP:
 		* make isLoggedIn / isAdmin DRY
-		* refactor auth routes
-		* refactor index routes
+		* refactor auth routes (DONE)
+		* refactor index routes (DONE)
 		* make logging in return user to previous page
 		* put filler info in footer links
 	* AUTH:
 		* associate comments with users (DONE)
-		* have user page, shows all comments and blogs they made
+		* have user page, shows all blogs they made
 		* add permissions, "admin" for posting and "user" for viewing (DONE)
 	* ERRORS:
 		* add actual error handling!
