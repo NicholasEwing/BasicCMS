@@ -42,3 +42,4 @@ Technologies used:
 		* minify code
 		* unit testing
 		* ensure 100% test coverage
+		* Create admin panel to allow editing of admin permissions
