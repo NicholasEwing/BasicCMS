@@ -1,16 +1,21 @@
 <%- include('../partials/header') -%>
 
 <div class="container">
-
-	<h1>Profile page of <%= results.username %></h1>
+	<h1><%= results.username %> - Profile Page</h1>
 
 	<h2>Blog posts:</h2>
-	<% console.log(results) %>
 	<% results.blogs.forEach(function(blog){%>
-		<p><%= blog.title %></p>
-		<p><%= blog.body %></p>
+		<div class="card" id="grid">
+			<div class="box">
+				<img src= "<%= blog.image %>" >
+			</div>
+			<p><strong><%= blog.title %>:</strong></p>
+			<p><%= blog.body.substring(0, 200) %></p>
+			<p>
+				Posted <%= helpers.timeSince(blog.created) %> ago
+			</p>
+			<a class="button" href="/blogs/<%=blog._id%>">Read More</a>
+		</div>
 	<% }); %>
-
 </div>
-
 <%- include('../partials/footer') -%>

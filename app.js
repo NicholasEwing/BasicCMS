@@ -14,7 +14,6 @@ let blogRoutes = require("./routes/blogs");
 let commentRoutes = require("./routes/comments");
 let userRoutes = require("./routes/users");
 
-
 let User = require("./models/user");
 
 // Seed the database
@@ -33,7 +32,7 @@ let path = require("path");
 
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Enables express-sanitizer, must come after app.use(bodyParser).

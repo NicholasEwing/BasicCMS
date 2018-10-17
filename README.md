@@ -22,6 +22,7 @@ Technologies used:
 		* refactor index routes (DONE)
 		* make logging in return user to previous page
 		* put filler info in footer links
+		* add favicon
 	* AUTH:
 		* associate comments with users (DONE)
 		* have user page, shows all blogs they made
@@ -34,6 +35,7 @@ Technologies used:
 		* try to post from POSTMAN
 		* sanitize comments, ensure line breaks work in comments
 	* WISHLIST:
+		* handle vertical images differently
 		* handle profanity, inappropriate images, inappropriate names, etc
 		* lint code
 		* minify code

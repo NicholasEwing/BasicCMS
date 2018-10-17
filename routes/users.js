@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const ejs_helpers = require("../public/js/ejs_helpers.js");
 
 let User = require("../models/user");
 let Blog = require("../models/blog");
@@ -16,8 +17,7 @@ router.get("/:id", function(req, res){
 		if(err){
 			console.log(err);
 		}
-		res.render("users/show", {results: results});
-		console.log(results);
+		res.render("users/show", {helpers: ejs_helpers, results: results});
 	});
 
 

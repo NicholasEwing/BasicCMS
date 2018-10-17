@@ -38,6 +38,7 @@ var commentData = [
 	}
 ];
 
+// This function is prime callback hell, needs refactoring.
 function seedDB(){
 
 	// Remove all blogs

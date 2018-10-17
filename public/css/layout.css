@@ -167,18 +167,23 @@ header a:hover {
 }
 
 
-/*Comments*/
+/*Cards*/
 
-.comments {
+.card {
+	float: left;
 	background-color: #fff;
-	margin: 1rem 5rem 1.25rem 0.05rem;
-	padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-	width: 40%;
+	margin: 1rem auto;
+	padding: 1.5rem;
+	width: 43%;
 	border: 0.1px solid rgba(0, 230, 255, 0.49);
 	border-radius: 0.5em;
 	-webkit-box-shadow: 0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
 	-moz-box-shadow:    0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Firefox 3.5 - 3.6 */
 	box-shadow:         0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#grid {
+	float: left;
 }
 
 /*Form inputs (blogs / comments / login)*/
@@ -242,10 +247,11 @@ label {
 /* Footer */
 
 footer {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	background-color: #828A95;
 	min-height: 70px;
+	margin-bottom: -70px;
 	color: white;
 	width: 100%;
 }
@@ -278,6 +284,7 @@ footer nav {
 	footer nav,
 	footer li, 
 	.featured-blog img,
+	.card img,
 	#blog img {
 		float: none;
 		text-align: center;
@@ -286,8 +293,8 @@ footer nav {
 		margin-left: auto;
 	}
 
-	.comments {
-		width: 80%;
+	#grid {
+		float: none;
 	}
 }
 
@@ -297,5 +304,6 @@ footer nav {
 	footer nav,
 	footer li {
 		display: block;
+		overflow: hidden;
 	}
 }
