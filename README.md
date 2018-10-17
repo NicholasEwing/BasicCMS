@@ -26,7 +26,7 @@ Technologies used:
 		* cleanup section tags
 	* AUTH:
 		* associate comments with users (DONE)
-		* have user page, shows all blogs they made
+		* have user page, shows all blogs they made (DONE)
 		* add permissions, "admin" for posting and "user" for viewing (DONE)
 	* ERRORS:
 		* add actual error handling!
