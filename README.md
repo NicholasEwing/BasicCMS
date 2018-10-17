@@ -23,6 +23,7 @@ Technologies used:
 		* make logging in return user to previous page
 		* put filler info in footer links
 		* add favicon
+		* cleanup section tags
 	* AUTH:
 		* associate comments with users (DONE)
 		* have user page, shows all blogs they made

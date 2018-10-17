@@ -61,11 +61,6 @@ ul {
 	padding: 0;
 }
 
-img {
-	max-width: 500px;
-	margin: 0 auto;
-}
-
 /* Header */
 
 header {
@@ -128,6 +123,7 @@ header a:hover {
 }
 
 .featured-blog img {
+	max-width: 500px;
 	float: right;
 	margin-left: 3em;
 }
@@ -170,11 +166,13 @@ header a:hover {
 /*Cards*/
 
 .card {
-	float: left;
+	display: inline-block;
+	box-sizing: border-box;
 	background-color: #fff;
-	margin: 1rem auto;
+	margin: 1rem;
 	padding: 1.5rem;
-	width: 43%;
+	min-width: 500px;
+	width: 45%;
 	border: 0.1px solid rgba(0, 230, 255, 0.49);
 	border-radius: 0.5em;
 	-webkit-box-shadow: 0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -182,8 +180,20 @@ header a:hover {
 	box-shadow:         0.5px 0.5px 3px 0.5px rgba(122, 122, 122, 0.75);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
+
+.card p {
+	text-align: left;
+}
+
+.card img {
+	float: none;
+	max-width: 500px;
+	height: auto;
+	margin-left: auto;
+}
+
 #grid {
-	float: left;
+	text-align: center;
 }
 
 /*Form inputs (blogs / comments / login)*/
@@ -285,7 +295,8 @@ footer nav {
 	footer li, 
 	.featured-blog img,
 	.card img,
-	#blog img {
+	#blog img,
+	h1, h2 {
 		float: none;
 		text-align: center;
 		width: 100%;
@@ -293,8 +304,11 @@ footer nav {
 		margin-left: auto;
 	}
 
-	#grid {
-		float: none;
+	.card {
+		min-width: 0;
+		width: 60%;
+		display: block;
+		margin: 20px auto;
 	}
 }
 
