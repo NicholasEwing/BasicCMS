@@ -20,10 +20,12 @@ Technologies used:
 		* make isLoggedIn / isAdmin DRY
 		* refactor auth routes (DONE)
 		* refactor index routes (DONE)
-		* make logging in return user to previous page
-		* put filler info in footer links
+		* put filler info in footer links, make filler pages
 		* add favicon
 		* cleanup section tags
+		* refactor other as needed
+	* FEATURE:
+		* make logging in return user to previous page
 	* AUTH:
 		* associate comments with users (DONE)
 		* have user page, shows all blogs they made (DONE)
@@ -32,9 +34,9 @@ Technologies used:
 		* add actual error handling!
 		* create 404 page
 	* SECURITY:
-		* add helmet and follow other best practices
-		* try to post from POSTMAN
-		* sanitize comments, ensure line breaks work in comments
+		* add helmet.js, check out other best practices
+		* try to post from POSTMAN (DONE)
+		* sanitize comments, ensure line breaks work in comments (DONE)
 	* WISHLIST:
 		* handle vertical images differently
 		* handle profanity, inappropriate images, inappropriate names, etc
