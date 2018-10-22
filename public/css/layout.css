@@ -287,7 +287,8 @@ footer nav {
 
 @media all and (max-width: 1350px){
 
-	header #branding, 
+	header #branding,
+	#auth-form, 
 	header nav, 
 	header li,
 	footer nav,
@@ -301,6 +302,10 @@ footer nav {
 		width: 100%;
 		height: auto;
 		margin-left: auto;
+	}
+
+	#auth-form form input {
+		width: 50%;
 	}
 
 	.card {

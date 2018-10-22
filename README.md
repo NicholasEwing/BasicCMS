@@ -21,7 +21,8 @@ Technologies used:
 		* refactor auth routes (DONE)
 		* refactor index routes (DONE)
 		* put filler info in footer links, make filler page (DONE)
-		* make login / register views look better on mobile
+		* make login / register views look better on mobile (DONE)
+		* add password confirm on registration form
 		* add favicon
 		* cleanup section tags
 		* refactor other as needed
