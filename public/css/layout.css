@@ -256,8 +256,8 @@ label {
 /* Footer */
 
 footer {
-	position: relative;
-	bottom: 0;
+	position: absolute;
+	bottom: 70px;
 	background-color: #828A95;
 	min-height: 70px;
 	margin-bottom: -70px;

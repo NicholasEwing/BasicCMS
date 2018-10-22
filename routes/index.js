@@ -49,4 +49,8 @@ router.get("/logout", function(req, res){
 	res.redirect("/");
 });
 
+router.get("/footer", function(req, res){
+	res.render("footer");
+})
+
 module.exports = router;

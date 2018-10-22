@@ -17,15 +17,16 @@ Technologies used:
 
 # TODO:
 	* CLEAN UP:
-		* make isLoggedIn / isAdmin DRY
+		* make isLoggedIn / isAdmin DRY (DONE)
 		* refactor auth routes (DONE)
 		* refactor index routes (DONE)
-		* put filler info in footer links, make filler pages
+		* put filler info in footer links, make filler page (DONE)
+		* make login / register views look better on mobile
 		* add favicon
 		* cleanup section tags
 		* refactor other as needed
 	* FEATURE:
-		* make logging in return user to previous page
+		* make logging in return user to previous page (DONE)
 	* AUTH:
 		* associate comments with users (DONE)
 		* have user page, shows all blogs they made (DONE)
