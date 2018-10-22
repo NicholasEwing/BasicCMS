@@ -1,11 +1,14 @@
 const express = require("express");
 // Look up what mergeParams does and study it!
 const router = express.Router({mergeParams: true});
-const Blog = require("../models/blog");
-const Comment = require("../models/comment");
+
+let Blog = require("../models/blog");
+let Comment = require("../models/comment");
+let middleware = require("../middleware");
+
 
 // require login middleware for all routes
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
 	Blog.findById(req.params.id, function(err, blog){
 		if(err){
 			console.log(err);
@@ -15,7 +18,7 @@ router.get("/new", isLoggedIn, function(req, res){
 	});
 });
 
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 	Blog.findById(req.params.id, function(err, blog){
 		if(err){
 			console.log(err);
@@ -39,13 +42,5 @@ router.post("/", isLoggedIn, function(req, res){
 		}
 	});
 });
-
-// This function is repeated. Please refactor.
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
 
 module.exports = router;

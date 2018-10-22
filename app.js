@@ -63,20 +63,4 @@ app.use("/blogs", blogRoutes);
 app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
 
-// these middleware functions repeat themselves, please refactor
-
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
-
-function isAdmin(req, res, next){
-	if(req.isAuthenticated() && req.user.isAdmin) {
-		return next();
-	}
-	res.send("YOU'RE NOT AN ADMIN!");
-}
-
 app.listen(3000, () => console.log("Server started on port 3000"));

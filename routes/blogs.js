@@ -3,6 +3,7 @@ const router = express.Router();
 
 let Blog = require("../models/blog");
 let User = require("../models/user");
+let middleware = require("../middleware");
 
 // INDEX ROUTE
 router.get("/", function(req, res){
@@ -16,12 +17,12 @@ router.get("/", function(req, res){
 });
 
 // NEW ROUTE
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
 	res.render("blogs/new");
 });
 
 // CREATE ROUTE
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 	req.body.blog.body = req.sanitize(req.body.blog.body);
 	Blog.create(req.body.blog, function(err, newBlog){
 		if(err){
@@ -54,7 +55,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:id/edit", isLoggedIn, function(req, res){
+router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
 	Blog.findById(req.params.id, function(err, foundBlog){
 		if(err){
 			res.redirect("/blogs");
@@ -66,7 +67,7 @@ router.get("/:id/edit", isLoggedIn, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", isLoggedIn, function(req, res){
+router.put("/:id", middleware.isLoggedIn, function(req, res){
 	req.body.blog.body = req.sanitize(req.body.blog.body);
 	Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
 		if(err){
@@ -78,7 +79,7 @@ router.put("/:id", isLoggedIn, function(req, res){
 });
 
 // DELETE ROUTE
-router.delete("/:id", isLoggedIn, function(req, res){
+router.delete("/:id", middleware.isLoggedIn, function(req, res){
 	Blog.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.send("Could not delete blog. Sorry.");
@@ -87,21 +88,5 @@ router.delete("/:id", isLoggedIn, function(req, res){
 		res.redirect("/blogs");
 	});
 });
-
-// these functions are repeated, please refactor / consolidate
-
-function isAdmin(req, res, next){
-	if(req.isAuthenticated() && req.user.isAdmin) {
-		return next();
-	}
-	res.send("YOU'RE NOT AN ADMIN!");
-}
-
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
 
 module.exports = router;

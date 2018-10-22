@@ -1,7 +1,7 @@
-exports = module.exports = {};
+let helperObj = {};
 
 // Measures time from some date object
-exports.timeSince = function(date) {
+helperObj.timeSince = function(date) {
   if (typeof date !== 'object') {
     date = new Date(date);
   }
@@ -43,3 +43,5 @@ exports.timeSince = function(date) {
 
   return interval + ' ' + intervalType;
 };
+
+module.exports = helperObj;
