@@ -38,8 +38,10 @@ Technologies used:
 		* add helmet.js, check out other best practices
 		* try to post from POSTMAN (DONE)
 		* sanitize comments, ensure line breaks work in comments (DONE)
+	* DEPLOYMENT:
+		* Host app on Heroku before moving to Wishlist tasks
 	* WISHLIST:
-		* make more interesting looking 
+		* make more interesting looking errors
 		* handle vertical images differently
 		* handle profanity, inappropriate images, inappropriate names, etc
 		* lint code
