@@ -17,6 +17,7 @@ let blogRoutes = require("./routes/blogs");
 let commentRoutes = require("./routes/comments");
 let userRoutes = require("./routes/users");
 
+// Models
 let User = require("./models/user");
 
 // Seed the database
@@ -28,6 +29,7 @@ const app = express();
 // Header security
 app.use(helmet());
 
+// Session / cookie settings
 let expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(expressSession({
 	secret: "this secret is totally going to appear on github",
@@ -37,14 +39,18 @@ app.use(expressSession({
 	cookie: {
 		secure: true,
 		httpOnly: true,
-		expires: expiryDate;
+		expires: expiryDate
 	}
 }))
 
-let path = require("path");
 
+// Set ejs as default view
 app.set("view engine", "ejs");
+
+// Allows for deleting via POST method
 app.use(methodOverride("_method"));
+
+let path = require("path");
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -80,6 +86,7 @@ app.use("/blogs", blogRoutes);
 app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
 
+// Handle 404 for html, json, and plain txt
 app.use(function(req, res, next){
 	res.status(404);
 

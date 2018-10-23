@@ -43,11 +43,9 @@ Technologies used:
 		* Host app on Heroku before moving to Wishlist tasks
 	* WISHLIST:
 		* Look up how to rebase commits and do that instead to cut down on commit spam
-		* make more interesting looking errors
-		* handle vertical images differently
 		* handle profanity, inappropriate images, inappropriate names, etc
 		* lint code
 		* minify code
 		* unit testing
-		* ensure 100% test coverage
+		* ensure 100% test coverage (?)
 		* Create admin panel to allow editing of admin permissions
