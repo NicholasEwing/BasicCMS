@@ -25,7 +25,7 @@ Technologies used:
 		* add password confirm on registration form (DONE)
 		* add favicon (DONE)
 		* cleanup section tags (DONE)
-		* resize images
+		* resize images (DONE)
 	* FEATURE:
 		* make logging in return user to previous page (DONE)
 	* AUTH:

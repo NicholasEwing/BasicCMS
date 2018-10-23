@@ -123,6 +123,7 @@ header a:hover {
 
 .featured-blog img {
 	max-width: 500px;
+	max-height: 500px;
 	float: right;
 	margin-left: 3em;
 }
@@ -149,7 +150,10 @@ header a:hover {
 #blog img {
 	float: right;
 	margin-top: 1em;
+	margin-bottom: 1em;
 	margin-left: 3em;
+	max-width: 800px;
+	max-height: 800px;
 }
 
 #blog button {
@@ -350,7 +354,8 @@ footer nav {
 	h1, h2 {
 		float: none;
 		text-align: center;
-		width: 100%;
+		max-width: 100%;
+		min-height: 100%;
 		height: auto;
 		margin-left: auto;
 	}
