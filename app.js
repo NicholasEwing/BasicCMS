@@ -1,4 +1,5 @@
 const flash						= require("flash");
+const helmet					= require("helmet");
 const express 					= require("express");
 const mongoose 					= require("mongoose");
 const passport 					= require("passport");
@@ -23,6 +24,9 @@ seedDB = require("./seeds");
 // seedDB();
 
 const app = express();
+
+// Header security
+app.use(helmet());
 
 app.use(expressSession({
 	secret: "this secret is totally going to appear on github",
