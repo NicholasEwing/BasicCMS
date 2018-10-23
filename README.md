@@ -22,10 +22,9 @@ Technologies used:
 		* refactor index routes (DONE)
 		* put filler info in footer links, make filler page (DONE)
 		* make login / register views look better on mobile (DONE)
-		* add password confirm on registration form
-		* add favicon
-		* cleanup section tags
-		* refactor other as needed
+		* add password confirm on registration form (DONE)
+		* add favicon (DONE)
+		* cleanup section tags (DONE)
 	* FEATURE:
 		* make logging in return user to previous page (DONE)
 	* AUTH:
@@ -40,6 +39,7 @@ Technologies used:
 		* try to post from POSTMAN (DONE)
 		* sanitize comments, ensure line breaks work in comments (DONE)
 	* WISHLIST:
+		* make more interesting looking 
 		* handle vertical images differently
 		* handle profanity, inappropriate images, inappropriate names, etc
 		* lint code

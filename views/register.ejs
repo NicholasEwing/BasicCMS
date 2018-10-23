@@ -3,9 +3,9 @@
 <div class="container form-input" id="auth-form">
 	<h1 class="form-input-title">Create a New Account</h1>
 	<form action="/register" method="POST">
-		<input type="text" name="username" placeholder="Username">
-		<input type="password" name="password" placeholder="Password">
-		<p>need confirm password here</p>
+		<input type="text" name="username" placeholder="Username" required>
+		<input type="password" id="password" name="password" placeholder="Password" required>
+		<input type="password" id="confirm_password" placeholder="Confirm password" onchange="matchPasswords(this)" required>
 		<input class="button" type="submit" value="Register">
 		<p><a href="/blogs/">Go Back</a></p>
 	</form>

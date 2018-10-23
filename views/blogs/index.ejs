@@ -1,5 +1,4 @@
 <%- include('../partials/header') -%>
-<section>
 <% blogs.forEach(function(blog){ %>
 	<div class="container featured-blog">
 		<div class="box">
@@ -14,7 +13,6 @@
 		<a class="button" href="/blogs/<%=blog._id%>">Read More</a>
 	</div>
 <% }) %>
-</section>
 
 <!-- If there are no blogs, center the "New Blog" button and display help text. -->
 <div class="box" <% if (blogs.length === 0) {%> id="center" <% }%>>

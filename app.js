@@ -2,6 +2,7 @@ const express 					= require("express");
 const mongoose 					= require("mongoose");
 const passport 					= require("passport");
 const bodyParser 				= require("body-parser");
+const favicon					= require("serve-favicon");
 const LocalStrategy 			= require("passport-local");
 const expressSession 			= require("express-session");
 const methodOverride 			= require("method-override");
@@ -33,6 +34,7 @@ let path = require("path");
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Enables express-sanitizer, must come after app.use(bodyParser).

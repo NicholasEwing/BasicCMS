@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
+const ejs_helpers = require("../public/js/ejs_helpers.js");
 
 let User = require("../models/user");
 
@@ -14,7 +15,7 @@ router.get("/", function(req, res){
 
 // show register form
 router.get("/register", function(req, res){
-	res.render("register");
+	res.render("register", {helpers: ejs_helpers});
 });
 
 // handling user sign up
