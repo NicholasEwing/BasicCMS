@@ -14,9 +14,11 @@ router.get("/:id", function(req, res){
 	User.findOne({username: req.params.id})
 	.populate("blogs")
 	.exec(function(err, results){
-		if(err){
-			console.log(err);
+		if(err || !results){
+			req.flash("error toast", "That user does not exist.");
+			res.redirect("/blogs");
 		}
+		
 		res.render("users/show", {helpers: ejs_helpers, results: results});
 	});
 

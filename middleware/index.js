@@ -5,6 +5,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
 		return next();
 	}
 	req.session.returnTo = req.originalUrl;
+	req.flash("error", "You must be logged in to do that.");
 	res.redirect("/login");
 }
 
@@ -12,8 +13,8 @@ middlewareObj.isAdmin = function(req, res, next){
 	if(req.isAuthenticated() && req.user.isAdmin) {
 		return next();
 	}
-	// Put a proper 
-	res.send("YOU'RE NOT AN ADMIN!");
+	// You must be an admin to do that!
+	res.redirect("/login");
 }
 
 module.exports = middlewareObj;

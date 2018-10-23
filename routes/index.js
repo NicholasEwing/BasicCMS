@@ -22,10 +22,11 @@ router.get("/register", function(req, res){
 router.post("/register", function(req, res){
 	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
 		if(err){
-			console.log(err);
+			req.flash("error", err.message);
 			return res.render("register");
 		} else {
 			passport.authenticate("local")(req, res, function(){
+				req.flash("success toast", "Hey " + user.username + ", thanks for signing up!");
 				res.redirect("/blogs");
 			});
 		}
@@ -34,20 +35,22 @@ router.post("/register", function(req, res){
 
 // show login form
 router.get("/login", function(req, res){
-	res.render("login")
+	res.render("login");
 });
 
 // login logic
 router.post("/login", passport.authenticate("local", {
 	successReturnToOrRedirect: "/blogs",
-	failureRedirect: "/login"
+	failureRedirect: "/login",
+	failureFlash: true
 }), function(req, res){
 });
 
 // logout logic
 router.get("/logout", function(req, res){
 	req.logout();
-	res.redirect("/");
+	req.flash("success toast", "You've logged out.");
+	res.redirect("/blogs");
 });
 
 router.get("/footer", function(req, res){

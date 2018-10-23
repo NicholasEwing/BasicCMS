@@ -11,22 +11,28 @@ let middleware = require("../middleware");
 router.get("/new", middleware.isLoggedIn, function(req, res){
 	Blog.findById(req.params.id, function(err, blog){
 		if(err){
-			console.log(err);
-		} else {
-			res.render("comments/new", {blog: blog});
+			req.flash("error toast", "Failed to lookup blog. Please try again.");
+			res.redirect("/blogs");
 		}
+
+		if(!blog){
+			req.flash("error toast", "That blog post no longer exists.");
+			res.redirect("/blogs");
+		}
+
+		res.render("comments/new", {blog: blog});
 	});
 });
 
 router.post("/", middleware.isLoggedIn, function(req, res){
 	Blog.findById(req.params.id, function(err, blog){
 		if(err){
-			console.log(err);
+			req.flash("error toast", err.message);
 			res.redirect("/blogs");
 		} else {
 			Comment.create(req.body.comment, function(err, comment){
-				if(err){
-					console.log(err);
+				if(err || !blog){
+					req.flash("error toast", "That blog post does not exist.");
 					res.redirect("/blogs");
 				} else {
 					// add username/id to comment
@@ -36,7 +42,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 					// add comment to blog
 					blog.comments.push(comment);
 					blog.save();
-					res.redirect("/blogs/" + blog._id);					
+					// res.redirect("/blogs/" + blog._id);
+					res.redirect("/blogs/")					
 				}
 			});
 		}

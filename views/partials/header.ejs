@@ -22,13 +22,23 @@
 				<ul>
 					<li><a href="/">Home</a></li>
 					<% if(!currentUser) { %>
-					<li><a href="/login">Login</a></li>
-					<li><a href="/register">Register</a></li>
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register">Register</a></li>
 					<% } else { %>
-					<li><a href="/logout">Logout</a></li>
-					<li>Logged in as <%= currentUser.username %></li>
+						<li><a href="/logout">Logout</a></li>
+						<li>Logged in as <%= currentUser.username %></li>
 					<% } %>
 				</ul>
 			</nav>
 		</div>
 	</header>
+
+	<% flash.forEach(function(message) { %>
+		<% console.log(message)%>
+		<% if(message.type.includes("toast")) { %>
+			<div class="container">
+				<p class="<%= message.type %>"><%=message.message%><span onclick="closeToast()">X</span></p>
+			</div>
+			<% flash.pop()%>
+		<% } %>
+	<% }); %>

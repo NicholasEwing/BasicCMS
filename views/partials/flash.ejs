@@ -1,0 +1,8 @@
+<% flash.forEach(function(message) { %>
+	<div class="container">
+		<p class="<%= message.type %>">
+			<%= message.message %>
+		</p>
+	</div>
+	<% flash.pop() %>
+<% }); %>

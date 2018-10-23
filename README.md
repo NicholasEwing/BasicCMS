@@ -25,6 +25,7 @@ Technologies used:
 		* add password confirm on registration form (DONE)
 		* add favicon (DONE)
 		* cleanup section tags (DONE)
+		* resize images
 	* FEATURE:
 		* make logging in return user to previous page (DONE)
 	* AUTH:
@@ -32,8 +33,8 @@ Technologies used:
 		* have user page, shows all blogs they made (DONE)
 		* add permissions, "admin" for posting and "user" for viewing (DONE)
 	* ERRORS:
-		* add actual error handling!
-		* create 404 page
+		* add actual error handling! (DONE)
+		* create 404 page (DONE)
 	* SECURITY:
 		* add helmet.js, check out other best practices
 		* try to post from POSTMAN (DONE)
@@ -41,6 +42,7 @@ Technologies used:
 	* DEPLOYMENT:
 		* Host app on Heroku before moving to Wishlist tasks
 	* WISHLIST:
+		* Look up how to rebase commits and do that instead to cut down on commit spam
 		* make more interesting looking errors
 		* handle vertical images differently
 		* handle profanity, inappropriate images, inappropriate names, etc

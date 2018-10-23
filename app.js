@@ -1,3 +1,4 @@
+const flash						= require("flash");
 const express 					= require("express");
 const mongoose 					= require("mongoose");
 const passport 					= require("passport");
@@ -44,6 +45,9 @@ app.use(expressSanitizer());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Initialize flash messgges
+app.use(flash());
+
 // Pass user data to all pages
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
@@ -64,5 +68,20 @@ app.use(indexRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
+
+app.use(function(req, res, next){
+	res.status(404);
+
+	if(req.accepts("html")) {
+		res.render("404", {url: req.originalUrl});
+		return;
+	}
+
+	if(req.accepts("json")) {
+		res.send({error: "Not found"});
+	}
+
+	res.type("txt").send("Not found")
+});
 
 app.listen(3000, () => console.log("Server started on port 3000"));
