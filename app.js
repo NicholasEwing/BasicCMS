@@ -35,14 +35,8 @@ app.use(expressSession({
 	secret: "this secret is totally going to appear on github",
 	name: "sessionId",
 	resave: false,
-	saveUninitialized: false,
-	cookie: {
-		secure: true,
-		httpOnly: true,
-		expires: expiryDate
-	}
-}))
-
+	saveUninitialized: false
+}));
 
 // Set ejs as default view
 app.set("view engine", "ejs");

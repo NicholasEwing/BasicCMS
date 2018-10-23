@@ -6,8 +6,15 @@ let User = require("../models/user");
 let Blog = require("../models/blog");
 
 router.get("/", function(req, res){
-	res.render("users/index");
-})
+	User.find({}, function(err, users){
+		if(err){
+			req.flash("error toast", "Unable to render blog posts. Please try again later.");
+			res.redirect("/blogs");
+		}
+
+		res.render("users/index", {users: users});
+	});
+});
 
 router.get("/:id", function(req, res){
 	// Find blogs where username == blog.author.username

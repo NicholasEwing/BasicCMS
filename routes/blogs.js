@@ -30,12 +30,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 			req.flash("error", "That blog title already exists. Please edit title and try again.");
 			res.render("blogs/new");
 		} else {
-			// add username / id to blog, refactor using object
 			newBlog.author.id = req.user._id;
 			newBlog.author.username = req.user.username;
 			newBlog.save();
 			User.findById(req.user._id, function(err, user){
-				req.flash("error toast", "Failed to lookup author name. Please try again.");
+				if(err) {
+					req.flash("error toast", "Failed to lookup author name. Please try again.");
+				}
 				user.blogs.push(newBlog);
 				user.save();
 			})
@@ -94,13 +95,15 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
 
 // DELETE ROUTE
 router.delete("/:id", middleware.isLoggedIn, function(req, res){
-	Blog.findByIdAndRemove(req.params.id, function(err){
+
+	Blog.findByIdAndRemove(req.params.id, function(err, blog){
 		if(err){
 			req.flash("error toast", "Failed to delete blog. Please try again.");
 		}
 
 		res.redirect("/blogs");
 	});
+
 });
 
 module.exports = router;

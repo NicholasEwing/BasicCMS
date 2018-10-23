@@ -36,12 +36,20 @@ Technologies used:
 		* add actual error handling! (DONE)
 		* create 404 page (DONE)
 	* SECURITY:
-		* add helmet.js, check out other best practices
+		* add helmet.js, check out other best practices (DONE)
 		* try to post from POSTMAN (DONE)
 		* sanitize comments, ensure line breaks work in comments (DONE)
 	* DEPLOYMENT:
+		* remove cookies for now (DONE)
+		* create users page to see all blog/comment activity by user (DONE)
+		* add ability to edit / delete comments
+		* Ensure comments/blogs are being deleted from users
 		* Host app on Heroku before moving to Wishlist tasks
 	* WISHLIST:
+		* get comments to align vertically again
+		* setup environment variables
+		* take secret off github
+		* Fix callback hell in some functions
 		* Look up how to rebase commits and do that instead to cut down on commit spam
 		* handle profanity, inappropriate images, inappropriate names, etc
 		* lint code
