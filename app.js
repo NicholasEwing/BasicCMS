@@ -28,10 +28,17 @@ const app = express();
 // Header security
 app.use(helmet());
 
+let expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(expressSession({
 	secret: "this secret is totally going to appear on github",
+	name: "sessionId",
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	cookie: {
+		secure: true,
+		httpOnly: true,
+		expires: expiryDate;
+	}
 }))
 
 let path = require("path");
