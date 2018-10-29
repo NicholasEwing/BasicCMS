@@ -256,6 +256,16 @@ label {
 	font-size: 1.15rem;
 }
 
+/*Delete confirmation*/
+
+.delete-confirm {
+	display: inline;
+}
+
+.delete-confirm button {
+	font-size: 2rem;
+}
+
 /* Footer */
 
 footer {
@@ -291,7 +301,6 @@ footer nav {
 /* Flash Messages */
 
 .info, .success, .warning, .error, .toast {
-	width: 20%;
 	margin: 2rem auto;
 	padding: 1rem;
 	border-radius: 0.5rem;
@@ -301,11 +310,15 @@ footer nav {
 	box-shadow:         0.3px 0.3px 2px 0.3px rgba(122, 122, 122, 0.75);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
+.info, .success, .warning, .error {
+	width: 20%;
+}
+
 .toast {
     position: fixed;
     text-align: left;
     bottom: 1rem;
-    right: 0;
+    right: 1rem;
     z-index: 1;
 	margin: 2rem;
 	 opacity: 1;
@@ -314,6 +327,7 @@ footer nav {
 }
 
 .toast span {
+	padding-left: 3rem;
 	float: right;
 	cursor: pointer;
 }

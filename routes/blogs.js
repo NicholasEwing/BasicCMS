@@ -101,6 +101,10 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
 			req.flash("error toast", "Failed to delete blog. Please try again.");
 		}
 
+		if(!blog){
+			req.flash("error toast", "Blog does not exist.");
+		}
+
 		res.redirect("/blogs");
 	});
 

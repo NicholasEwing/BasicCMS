@@ -42,10 +42,14 @@ Technologies used:
 	* DEPLOYMENT:
 		* remove cookies for now (DONE)
 		* create users page to see all blog/comment activity by user (DONE)
-		* add ability to edit / delete comments
+		* add ability to edit / delete comments (DONE)
 		* Ensure comments/blogs are being deleted from users
 		* Host app on Heroku before moving to Wishlist tasks
 	* WISHLIST:
+		* add preview of comment when confirming deletion
+		* add "are you sure?" prompt when deleting blogs
+		* add preview of blog when confirming deletion
+		* try some ES6 shenanigans like () => {} 
 		* get comments to align vertically again
 		* setup environment variables
 		* take secret off github

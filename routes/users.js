@@ -4,6 +4,7 @@ const ejs_helpers = require("../public/js/ejs_helpers.js");
 
 let User = require("../models/user");
 let Blog = require("../models/blog");
+let Comments = require("../models/comment");
 
 router.get("/", function(req, res){
 	User.find({}, function(err, users){

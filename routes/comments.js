@@ -60,19 +60,59 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 	});
 });
 
-// CREATE ROUTE
-router.delete(":/id", middleware.isLoggedIn, function(req, res){
+// EDIT ROUTE
+router.get("/:comment_id/edit", middleware.isLoggedIn, function(req, res){
+	console.log("Blog id: " + req.params.id);
+	console.log("Comment id: " + req.params.comment_id);
 
-	// DELETE COMMENT
+	Comment.findById(req.params.comment_id, function(err, foundComment){
+		if(err) {
+			req.flash("error toast", "Could not open edit view for this comment.");
+			res.redirect("/blogs/:id");
+		}
 
-	// Comment.findById(req.params.id, function(err, comment){
-	// 	if(err){
-	// 		console.log(err);
-	// 	}
+		if(!foundComment) {
+			req.flash("error toast", "Comment no longer exists.");
+			res.redirect("/blogs/:id");
+		}
 
-	// 	res.redirect("/blogs/" + req.params.id);
-	// })
+		res.render("comments/edit", {blog_id: req.params.id, comment: foundComment});
+	});
+});
 
+// UPDATE ROUTE
+router.put("/:comment_id", middleware.isLoggedIn, function(req, res){
+	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, foundComment){
+		if(err) {
+			req.flash("error", "Could not update comment.");
+		}
+
+		if(!foundComment) {
+			req.flash("error", "Comment does not exist.");
+		}
+
+		res.redirect("/blogs/" + req.params.id);
+	});
+});
+
+// CONFIRM DELETE ROUTE
+router.get("/:comment_id/delete", middleware.isLoggedIn, function(req, res){
+	res.render("comments/delete", {blog_id: req.params.id, comment_id: req.params.comment_id});
+})
+
+// DELETE ROUTE
+router.delete("/:comment_id", middleware.isLoggedIn, function(req, res){
+	Comment.findByIdAndRemove(req.params.comment_id, function(err, comment){
+		if(err){
+			req.flash("error", "Could not delete comment.");
+		}
+
+		if(!comment){
+			req.flash("error", "Comment does not exist.");
+		}
+
+		res.redirect("/blogs/" + req.params.id);
+	});
 })
 
 module.exports = router;

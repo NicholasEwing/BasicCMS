@@ -18,6 +18,13 @@
 		<div class="card">
 			<p><strong><%= comment.author.username %>:</strong></p>
 			<p><%= comment.text %></p>
+			<form action="/blogs/<%= blog._id %>/comments/<%= comment._id %>/edit" method="GET">
+				<button class="button">Edit</button>
+			</form>
+
+			<form action="/blogs/<%= blog._id %>/comments/<%= comment._id %>/delete" method="GET">
+				<button class="button">Delete</button>
+			</form>
 		</div>
 	<% }); %>
 	
