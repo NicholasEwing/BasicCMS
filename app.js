@@ -68,8 +68,8 @@ app.use(function(req, res, next){
 
 // Connect MongoDB
 mongoose.set("useCreateIndex", true);
-// mongoose.connect("mongodb://localhost/blogcms", {useNewUrlParser: true});
-mongoose.connect("mongodb://NicholasEwing:totallypublic12345lol@ds039165.mlab.com:39165/basic-cms");
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+mongoose.connect("mongodb://NicholasEwing:totallypublic12345lol@ds039165.mlab.com:39165/basic-cms", {useNewUrlParser: true});
 
 // Configure passport-local
 passport.use(new LocalStrategy(User.authenticate()));
