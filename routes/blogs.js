@@ -96,6 +96,7 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
 // DELETE ROUTE
 router.delete("/:id", middleware.isLoggedIn, function(req, res){
 
+	// Delete blog
 	Blog.findByIdAndRemove(req.params.id, function(err, blog){
 		if(err){
 			req.flash("error toast", "Failed to delete blog. Please try again.");
@@ -105,8 +106,24 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
 			req.flash("error toast", "Blog does not exist.");
 		}
 
+		// Delete blog reference from author
+		User.findByIdAndUpdate(blog.author.id, { $pull: {blogs: {$in: req.params.id}}}, function(err, user){
+			if(err){
+				req.flash("error toast", "Blog could not be removed from user.");
+			}
+
+			if(!user){
+				req.flash("error toast", "User does not exist, could not delete blog from profile.");
+			}
+
+			req.flash("success toast", "Blog deleted.");
+		});
+
 		res.redirect("/blogs");
 	});
+
+	// find user and comment array
+	// remove comment from array
 
 });
 

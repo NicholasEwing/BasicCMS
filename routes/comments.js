@@ -102,17 +102,39 @@ router.get("/:comment_id/delete", middleware.isLoggedIn, function(req, res){
 
 // DELETE ROUTE
 router.delete("/:comment_id", middleware.isLoggedIn, function(req, res){
+	// Delete comment
 	Comment.findByIdAndRemove(req.params.comment_id, function(err, comment){
 		if(err){
-			req.flash("error", "Could not delete comment.");
+			req.flash("error toast", "Could not delete comment.");
 		}
 
 		if(!comment){
-			req.flash("error", "Comment does not exist.");
+			req.flash("error toast", "Comment does not exist.");
 		}
+
+		// Delete comment reference from author
+		User.findByIdAndUpdate(comment.author.id, { $pull: {comments: {$in: req.params.comment_id}}}, function(err, user){
+			if(err){
+				req.flash("error toast", "Comment could not be removed from user.");
+			}
+
+			if(!user){
+				req.flash("error toast", "User does not exist, could not delete comment from profile.");
+			}
+
+			req.flash("success toast", "Comment deleted.");
+		});
 
 		res.redirect("/blogs/" + req.params.id);
 	});
+
+	// db.users.update({}, {$pull: {comments: {$in: [ObjectId("5bd9fc1fdbb6cd6e1745f34d")]}}})
+
+
+	// find user and comment array
+	// remove comment from array
+
+
 })
 
 module.exports = router;
