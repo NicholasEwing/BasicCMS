@@ -25,6 +25,7 @@ seedDB = require("./seeds");
 // seedDB();
 
 const app = express();
+let port = process.env.PORT || 8080;
 
 // Header security
 app.use(helmet());
@@ -96,4 +97,4 @@ app.use(function(req, res, next){
 	res.type("txt").send("Not found")
 });
 
-app.listen(3000, () => console.log("Server started on port 3000"));
+app.listen(port, () => console.log("Server started on port " + port));
