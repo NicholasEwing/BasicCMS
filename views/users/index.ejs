@@ -7,7 +7,7 @@
 
 	<% users.forEach(function(user){ %>
 		<div class="card">
-			<h1><%= user.username %></h1>
+			<h1><a href="/users/ <% user.username %>"><%= user.username %></a></h1>
 			<p>Blogs created: <%= user.blogs.length %></p>
 			<p>Comments made: <%= user.comments.length %></p>
 		</div>
