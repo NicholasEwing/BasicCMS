@@ -33,7 +33,7 @@ app.use(helmet());
 // Session / cookie settings
 let expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(expressSession({
-	secret: "this secret is totally going to appear on github",
+	secret: process.env.SESSION_SECRET,
 	name: "sessionId",
 	resave: false,
 	saveUninitialized: false
@@ -67,9 +67,10 @@ app.use(function(req, res, next){
 })
 
 // Connect MongoDB
+let url = process.env.DATABASEURL || "mongodb://localhost/blogcms";
+
 mongoose.set("useCreateIndex", true);
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
-mongoose.connect("mongodb://NicholasEwing:totallypublic12345lol@ds039165.mlab.com:39165/basic-cms", {useNewUrlParser: true});
+mongoose.connect(url, {useNewUrlParser: true});
 
 // Configure passport-local
 passport.use(new LocalStrategy(User.authenticate()));
