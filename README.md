@@ -1,5 +1,7 @@
 # BasicCMS
 
+[Click here to try a live demo!](https://basic-cms-by-nicholas-ewing.herokuapp.com)
+
 In this project, I'm creating a basic content management system to polish my front-end and back-end skills.
 
 For the first leg of the project, I'm using ONLY vanilla CSS3 to create a basic responsive layout. Once authentication features have been added, I'll rework the app's front-end using Angular and rework the back-end as necessary (consolidating into one index.html instead of ejs templates).
