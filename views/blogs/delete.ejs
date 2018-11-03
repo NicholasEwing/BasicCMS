@@ -1,0 +1,17 @@
+<%- include('../partials/header') -%>
+
+<div class="box" id="center">
+
+	<h1>Are you sure you want to delete this blog?</h1>
+	<form class="delete-confirm" action="/blogs/<%= blog_id %>?_method=DELETE" method="POST">
+		<button class="button">Yes</button>
+	</form>
+	<form class="delete-confirm" action="/blogs/<%= blog_id %>" method="GET">
+		<button class="button">No</button>
+	</form>
+
+</div>
+
+<%- include('../partials/flash') -%>
+
+<%- include('../partials/footer') -%>

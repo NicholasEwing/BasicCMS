@@ -93,6 +93,11 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
 	});
 });
 
+// DELETE CONFIRM ROUTE
+router.get("/:id/delete", middleware.isLoggedIn, function(req, res){
+		res.render("blogs/delete", {blog_id: req.params.id});
+});
+
 // DELETE ROUTE
 router.delete("/:id", middleware.isLoggedIn, function(req, res){
 

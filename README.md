@@ -46,18 +46,15 @@ Technologies used:
 		* create users page to see all blog/comment activity by user (DONE)
 		* add ability to edit / delete comments (DONE)
 		* Ensure comments/blogs are being deleted from users (DONE)
-		* Host app on Heroku before moving to Wishlist tasks
+		* Host app on Heroku before moving to Wishlist tasks (DONE)
 	* WISHLIST:
-		* add preview of comment when confirming deletion
-		* add "are you sure?" prompt when deleting blogs
-		* add preview of blog when confirming deletion
-		* hide more buttons when not logged in
+		* add "are you sure?" prompt when deleting blogs (DONE)
+		* hide more buttons when not logged in (DONE)
 		* try some ES6 shenanigans like () => {}
 		* read more about ES5 / ES6 compatibilites with browsers 
 		* get comments to align vertically again
-		* setup environment variables
-		* take secret off github
-		* Fix callback hell in some functions
+		* setup environment variables (DONE)
+		* take secret off github (DONE)
 		* Look up how to rebase commits and do that instead to cut down on commit spam
 		* handle profanity, inappropriate images, inappropriate names, etc
 		* lint code
