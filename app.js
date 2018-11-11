@@ -61,7 +61,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Pass user data to all pages
-app.use(function(req, res, next){
+app.use((req, res, next) => {
 	res.locals.currentUser = req.user;
 	next();
 })
@@ -84,7 +84,7 @@ app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
 
 // Handle 404 for html, json, and plain txt
-app.use(function(req, res, next){
+app.use((req, res, next) => {
 	res.status(404);
 
 	if(req.accepts("html")) {

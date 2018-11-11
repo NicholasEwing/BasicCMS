@@ -1,6 +1,6 @@
 let middlewareObj = {};
 
-middlewareObj.isLoggedIn = function(req, res, next){
+middlewareObj.isLoggedIn = (req, res, next) => {
 
 	if(req.isAuthenticated()){
 		return next();
@@ -11,7 +11,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
 	res.redirect("/login");
 }
 
-middlewareObj.isAdmin = function(req, res, next){
+middlewareObj.isAdmin = (req, res, next) => {
 	if(req.isAuthenticated() && req.user.isAdmin) {
 		return next();
 	}

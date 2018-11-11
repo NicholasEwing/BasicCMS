@@ -9,8 +9,8 @@ let middleware = require("../middleware");
 
 
 // NEW ROUTE
-router.get("/new", middleware.isLoggedIn, function(req, res){
-	Blog.findById(req.params.id, function(err, blog){
+router.get("/new", middleware.isLoggedIn, (req, res) => {
+	Blog.findById(req.params.id, (err, blog) => {
 		if(err){
 			req.flash("error toast", "Failed to lookup blog. Please try again.");
 			res.redirect("/blogs");
@@ -26,13 +26,13 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 // CREATE ROUTE
-router.post("/", middleware.isLoggedIn, function(req, res){
-	Blog.findById(req.params.id, function(err, blog){
+router.post("/", middleware.isLoggedIn, (req, res) => {
+	Blog.findById(req.params.id, (err, blog) => {
 		if(err){
 			req.flash("error toast", err.message);
 			res.redirect("/blogs");
 		} else {
-			Comment.create(req.body.comment, function(err, comment){
+			Comment.create(req.body.comment, (err, comment) => {
 				if(err || !blog){
 					req.flash("error toast", "That blog post does not exist.");
 					res.redirect("/blogs");
@@ -42,7 +42,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 					comment.author.username = req.user.username;
 					comment.save();
 					// add comment to user document
-					User.findById(req.user._id, function(err, user){
+					User.findById(req.user._id, (err, user) => {
 						if(err || !comment){
 							req.flash("error toast", "Failed to post comment. Please try again.");
 						}
@@ -61,11 +61,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:comment_id/edit", middleware.isLoggedIn, function(req, res){
+router.get("/:comment_id/edit", middleware.isLoggedIn, (req, res) => {
 	console.log("Blog id: " + req.params.id);
 	console.log("Comment id: " + req.params.comment_id);
 
-	Comment.findById(req.params.comment_id, function(err, foundComment){
+	Comment.findById(req.params.comment_id, (err, foundComment) => {
 		if(err) {
 			req.flash("error toast", "Could not open edit view for this comment.");
 			res.redirect("/blogs/:id");
@@ -81,8 +81,8 @@ router.get("/:comment_id/edit", middleware.isLoggedIn, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:comment_id", middleware.isLoggedIn, function(req, res){
-	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, foundComment){
+router.put("/:comment_id", middleware.isLoggedIn, (req, res) => {
+	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, foundComment) => {
 		if(err) {
 			req.flash("error", "Could not update comment.");
 		}
@@ -96,14 +96,14 @@ router.put("/:comment_id", middleware.isLoggedIn, function(req, res){
 });
 
 // CONFIRM DELETE ROUTE
-router.get("/:comment_id/delete", middleware.isLoggedIn, function(req, res){
+router.get("/:comment_id/delete", middleware.isLoggedIn, (req, res) => {
 	res.render("comments/delete", {blog_id: req.params.id, comment_id: req.params.comment_id});
 })
 
 // DELETE ROUTE
-router.delete("/:comment_id", middleware.isLoggedIn, function(req, res){
+router.delete("/:comment_id", middleware.isLoggedIn, (req, res) => {
 	// Delete comment
-	Comment.findByIdAndRemove(req.params.comment_id, function(err, comment){
+	Comment.findByIdAndRemove(req.params.comment_id, (err, comment) => {
 		if(err){
 			req.flash("error toast", "Could not delete comment.");
 		}
@@ -113,7 +113,7 @@ router.delete("/:comment_id", middleware.isLoggedIn, function(req, res){
 		}
 
 		// Delete comment reference from author
-		User.findByIdAndUpdate(comment.author.id, { $pull: {comments: {$in: req.params.comment_id}}}, function(err, user){
+		User.findByIdAndUpdate(comment.author.id, { $pull: {comments: {$in: req.params.comment_id}}}, (err, user) => {
 			if(err){
 				req.flash("error toast", "Comment could not be removed from user.");
 			}

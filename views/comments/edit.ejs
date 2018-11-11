@@ -1,9 +1,6 @@
 <%- include('../partials/header') -%>
 
 <div class="container form-input">
-
-	<!-- Change this to work on comments -->
-
 	<h1 class="form-input-title">Edit Comment</h1>
 	<form action="/blogs/<%= blog_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
 		<label for="body">Text:</label>

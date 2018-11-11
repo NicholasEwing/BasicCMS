@@ -6,8 +6,8 @@ let User = require("../models/user");
 let Blog = require("../models/blog");
 let Comments = require("../models/comment");
 
-router.get("/", function(req, res){
-	User.find({}, function(err, users){
+router.get("/", (req, res) => {
+	User.find({}, (err, users) => {
 		if(err){
 			req.flash("error toast", "Unable to render blog posts. Please try again later.");
 			res.redirect("/blogs");
@@ -17,11 +17,11 @@ router.get("/", function(req, res){
 	});
 });
 
-router.get("/:id", function(req, res){
+router.get("/:id", (req, res) => {
 	// Find blogs where username == blog.author.username
 	User.findOne({username: req.params.id})
 	.populate("blogs")
-	.exec(function(err, results){
+	.exec((err, results) => {
 		if(err || !results){
 			req.flash("error toast", "That user does not exist.");
 			res.redirect("/blogs");

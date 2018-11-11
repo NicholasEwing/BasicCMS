@@ -34,7 +34,7 @@
 		</div>
 	</header>
 
-	<% flash.forEach(function(message) { %>
+	<% flash.forEach((message) => { %>
 		<% console.log(message)%>
 		<% if(message.type.includes("toast")) { %>
 			<div class="container">

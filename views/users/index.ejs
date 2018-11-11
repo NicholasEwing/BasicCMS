@@ -5,7 +5,7 @@
 	<h1>Users:</h1>
 	<p>This page show stats on users' comments and blog posts. Will be fleshed out later.</p>
 
-	<% users.forEach(function(user){ %>
+	<% users.forEach((user) => { %>
 		<div class="card">
 			<h1><a href="/users/<%= user.username %>"><%= user.username %></a></h1>
 			<p>Blogs created: <%= user.blogs.length %></p>

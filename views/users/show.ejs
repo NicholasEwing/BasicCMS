@@ -5,7 +5,7 @@
 	<h1><%= results.username %> - Profile Page</h1>
 
 	<h2>Blog posts:</h2>
-	<% results.blogs.forEach(function(blog){%>
+	<% results.blogs.forEach((blog) => {%>
 		<div class="container card">
 			<div class="box">
 				<img src= "<%= blog.image %>" >

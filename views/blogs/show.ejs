@@ -14,7 +14,7 @@
 
 	<p><strong>Comments:</strong></p>
 
-	<% blog.comments.forEach(function(comment){ %>
+	<% blog.comments.forEach((comment) => { %>
 		<div class="card">
 			<p><strong><%= comment.author.username %>:</strong></p>
 			<p><%= comment.text %></p>
