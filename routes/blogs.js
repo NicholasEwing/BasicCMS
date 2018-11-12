@@ -25,5 +25,5 @@ router.route("/:id/edit")
 
 router.route("/:id/delete")
     .get(middleware.isLoggedIn, BlogController.deleteConfirm);
-    
+
 module.exports = router;
