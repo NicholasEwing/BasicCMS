@@ -7,7 +7,6 @@ let User = require("../models/user");
 let Comment = require("../models/comment");
 let middleware = require("../middleware");
 
-
 // NEW ROUTE
 router.get("/new", middleware.isLoggedIn, (req, res) => {
 	Blog.findById(req.params.id, (err, blog) => {
@@ -41,6 +40,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 					comment.author.id = req.user._id;
 					comment.author.username = req.user.username;
 					comment.save();
+
 					// add comment to user document
 					User.findById(req.user._id, (err, user) => {
 						if(err || !comment){
@@ -52,7 +52,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 					// add comment to blog
 					blog.comments.push(comment);
 					blog.save();
-					// res.redirect("/blogs/" + blog._id);
+
 					res.redirect("/blogs/" + blog._id);					
 				}
 			});
@@ -123,6 +123,10 @@ router.delete("/:comment_id", middleware.isLoggedIn, (req, res) => {
 			}
 
 			req.flash("success toast", "Comment deleted.");
+		});
+
+		Blog.update({$pull: {comments: {$in: comment._id}}}, (err) => {
+			console.log(err);
 		});
 
 		res.redirect("/blogs/" + req.params.id);

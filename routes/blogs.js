@@ -3,6 +3,7 @@ const router = express.Router();
 
 let Blog = require("../models/blog");
 let User = require("../models/user");
+let Comment = require("../models/comment");
 let middleware = require("../middleware");
 
 // INDEX ROUTE
@@ -99,37 +100,38 @@ router.get("/:id/delete", middleware.isLoggedIn, (req, res) => {
 });
 
 // DELETE ROUTE
-router.delete("/:id", middleware.isLoggedIn, (req, res) => {
+router.delete("/:id", middleware.isLoggedIn, (req, res, next) => {
 
-	// Delete blog
-	Blog.findByIdAndRemove(req.params.id, (err, blog) => {
-		if(err){
-			req.flash("error toast", "Failed to delete blog. Please try again.");
-		}
+	if (err || !blog) {
+		req.flash("error toast", "Could not remove blog.");
+	}
 
-		if(!blog){
-			req.flash("error toast", "Blog does not exist.");
-		}
-
-		// Delete blog reference from author
-		User.findByIdAndUpdate(blog.author.id, { $pull: {blogs: {$in: req.params.id}}}, (err, user) => {
-			if(err){
-				req.flash("error toast", "Blog could not be removed from user.");
+	Blog.findById(req.params.id, (err, blog) => {
+		Comment.find({_id: {$in: blog.comments}}, (err, comments) => {
+			if(err) {
+				req.flash("error toast", "Error pulling comments when deleting blog.");
+				res.redirect("/");
 			}
 
-			if(!user){
-				req.flash("error toast", "User does not exist, could not delete blog from profile.");
-			}
-
-			req.flash("success toast", "Blog deleted.");
+			User.updateMany({$pull: {comments: {$in: comments}}}, (err, users) => {
+				if(err) {
+					req.flash("error toast", "Error pulling comments from users.");
+					res.redirect("/");
+				}
+			});
 		});
 
-		res.redirect("/blogs");
+		User.updateMany({$pull: {blogs: {$in: blog._id}}}, (err, user) => {
+			if(err) {
+				req.flash("error toast", "Error pulling blog from author.")
+				res.redirect("/");
+			}
+		});
+
+		blog.remove();
+		req.flash("success toast", "Blog removed.");
+		res.redirect("/");
 	});
-
-	// find user and comment array
-	// remove comment from array
-
 });
 
 module.exports = router;

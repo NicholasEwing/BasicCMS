@@ -21,6 +21,10 @@ let blogSchema = new mongoose.Schema({
 	]
 });
 
+// blogSchema.pre("remove", (next) => {
+// 	this.model("Comment").remove({blog: this._id}, next);
+// });
+
 let Blog = mongoose.model("Blog", blogSchema);
 
 module.exports = Blog;
