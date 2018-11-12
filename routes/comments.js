@@ -1,14 +1,8 @@
 const express = require("express");
-// Look up what mergeParams does and study it!
 const router = express.Router({mergeParams: true});
-
-let Blog = require("../models/blog");
-let User = require("../models/user");
-let Comment = require("../models/comment");
-let middleware = require("../middleware");
-
+const middleware = require("../middleware");
 const CommentController = require("../controllers/commentController");
-
+ 
 router.use(middleware.isLoggedIn);
 
 router.route("/")

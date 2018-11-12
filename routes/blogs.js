@@ -1,15 +1,10 @@
 const express = require("express");
 const router = express.Router();
-
-let Blog = require("../models/blog");
-let User = require("../models/user");
-let Comment = require("../models/comment");
-let middleware = require("../middleware");
-
+const middleware = require("../middleware");
 const BlogController = require("../controllers/blogController");
 
 router.route("/")
-    .get(BlogController.getAll)
+    .get(BlogController.getBlogs)
     .post(middleware.isLoggedIn, BlogController.createBlog);
 
 router.route("/new")

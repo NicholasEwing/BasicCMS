@@ -6,7 +6,6 @@ const ejs_helpers = require("../public/js/ejs_helpers.js");
 let User = require("../models/user");
 
 // RESTFUL ROUTES
-
 router.get("/", (req, res) => {
 	res.redirect("/blogs");
 });

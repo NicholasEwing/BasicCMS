@@ -1,9 +1,9 @@
-let Blog = require("../models/blog");
-let User = require("../models/user");
-let Comment = require("../models/comment");
+const Blog = require("../models/blog");
+const User = require("../models/user");
+const Comment = require("../models/comment");
 
 module.exports = {
-	getAll : (req, res) => {
+	getBlogs : (req, res) => {
 		Blog.find({}, (err, blogs) => {
 			if(err) {
 				req.flash("error toast", "Unable to render blog posts. Please try again.");

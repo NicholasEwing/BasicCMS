@@ -1,6 +1,6 @@
-let Blog = require("../models/blog");
-let User = require("../models/user");
-let Comment = require("../models/comment");
+const Blog = require("../models/blog");
+const User = require("../models/user");
+const Comment = require("../models/comment");
 
 module.exports = {
 	newCommentForm : (req, res) => {
