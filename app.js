@@ -1,24 +1,23 @@
-const flash = require("flash");
-const helmet = require("helmet");
-const express = require("express");
-const mongoose = require("mongoose");
-const passport = require("passport");
-const favicon = require("serve-favicon");
-const bodyParser = require("body-parser");
-const LocalStrategy = require("passport-local");
-const expressSession = require("express-session");
-const methodOverride = require("method-override");
-const expressSanitizer 	= require("express-sanitizer");
+const flash 				= require("flash");
+const helmet 				= require("helmet");
+const express 				= require("express");
+const mongoose 				= require("mongoose");
+const passport 				= require("passport");
+const favicon 				= require("serve-favicon");
+const bodyParser 			= require("body-parser");
+const LocalStrategy 		= require("passport-local");
+const expressSession 		= require("express-session");
+const methodOverride 		= require("method-override");
+const expressSanitizer 		= require("express-sanitizer");
 const passportLocalMongoose = require("passport-local-mongoose");
+
+mongoose.Promise = Promise;
 
 // Routes
 let indexRoutes = require("./routes/index");
 let blogRoutes = require("./routes/blogs");
 let commentRoutes = require("./routes/comments");
 let userRoutes = require("./routes/users");
-
-// Models
-let User = require("./models/user");
 
 // Seed the database
 seedDB = require("./seeds");
@@ -68,9 +67,11 @@ app.use((req, res, next) => {
 
 // Connect MongoDB
 let url = process.env.DATABASEURL || "mongodb://localhost/blogcms";
-
 mongoose.set("useCreateIndex", true);
 mongoose.connect(url, {useNewUrlParser: true});
+
+// Models
+let User = require("./models/user");
 
 // Configure passport-local
 passport.use(new LocalStrategy(User.authenticate()));

@@ -4,38 +4,37 @@ const Comment = require("../models/comment");
 
 module.exports = {
 	getBlogs : (req, res) => {
-		Blog.find({}, (err, blogs) => {
-			if(err) {
-				req.flash("error toast", "Unable to render blog posts. Please try again.");
-				res.redirect("/blogs");
-			}
-
+		Blog.find({})
+		.exec()
+		.then((blogs) => {
 			res.render("blogs/index", {blogs: blogs});
+		})
+		.catch((err) => {
+			req.flash("error toast", "Error retrieving blogs.");
+			res.redirect("/");
 		});
 	},
 	newBlogForm : (req, res) => {
-		res.render("blogs/new")
+		res.render("blogs/new");
 	},
 	createBlog : (req, res) => {
 		req.body.blog.body = req.sanitize(req.body.blog.body);
-		Blog.create(req.body.blog, (err, newBlog) => {
-			if(err){
-				req.flash("error", "That blog title already exists. Please edit title and try again.");
-				res.render("blogs/new");
-			} else {
+
+		// rewrite this stuff below as a promise!
+
+		Blog.create(req.body.blog)
+			.then((newBlog) => {
 				newBlog.author.id = req.user._id;
 				newBlog.author.username = req.user.username;
-				newBlog.save();
-				User.findById(req.user._id, (err, user) => {
-					if(err) {
-						req.flash("error toast", "Failed to lookup author name. Please try again.");
-					}
-					user.blogs.push(newBlog);
-					user.save();
-				})
+				newBlog.save()
+			})
+			.then((createdBlog) => User.findOneAndUpdate(req.user._id, {$push: {blogs: createdBlog}}))
+			.then(() => res.redirect("/blogs"))
+			.catch((err) => {
+				res.flash("Whoops! Couldn't create new blog");
 				res.redirect("/blogs");
-			}
-		});
+			});
+
 	},
 	getBlog : (req, res) => {
 		Blog.findById(req.params.id).populate("comments").exec((err, foundBlog) => {
