@@ -8,6 +8,12 @@ let commentSchema = new mongoose.Schema({
 			ref: "User"
 		},
 		username: String
+	},
+	blog: {
+		id: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Blog"
+		}
 	}
 });
 

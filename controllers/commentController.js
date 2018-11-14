@@ -32,6 +32,7 @@ module.exports = {
 						// add username/id to comment
 						comment.author.id = req.user._id;
 						comment.author.username = req.user.username;
+						comment.blog.id = req.params.id;
 						comment.save();
 
 						// add comment to user document
