@@ -86,6 +86,9 @@ module.exports = {
 				req.flash("success toast", "Blog removed.");
 				res.redirect("/");
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				req.flash("error toast", "Something went wrong!");
+				res.redirect("/");
+			});
 	}
 }
