@@ -41,10 +41,13 @@ module.exports = {
 		Blog.findById(req.params.id)
 			.populate("comments")
 			.exec()
-			.then(foundBlog => res.render("blogs/show", {blog: foundBlog}))
-			.catch((err) => {
-				req.flash("error toast", "Couldn't find this blog post.")
-				res.redirect("/blogs");
+			.then((foundBlog) => {
+				if(foundBlog) {
+					return res.render("blogs/show", {blog: foundBlog});
+				}
+
+				req.flash("error toast", "Couldn't find this blog post.");
+				return res.redirect("/");
 			});
 	},
 	updateBlogForm : (req, res) => {
