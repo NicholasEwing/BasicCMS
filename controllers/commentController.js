@@ -48,7 +48,7 @@ module.exports = {
 			});
 	},
 	updateComment : (req, res) => {
-		Comment.findOneAndUpdate(req.params.comment_id, req.body.comment)
+		Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment)
 			.then((foundComment) => {
 				if(foundComment) {
 					return res.redirect("/blogs/" + req.params.id);
