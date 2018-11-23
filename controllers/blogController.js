@@ -28,7 +28,7 @@ module.exports = {
 				return newBlog.save();
 			})
 			.then((createdBlog) => {
-				User.findOneAndUpdate(req.user._id, {$push: {blogs: createdBlog._id}})
+				User.findByIdAndUpdate(req.user._id, {$push: {blogs: createdBlog._id}})
 					.exec();
 			})
 			.then(() => res.redirect("/blogs"))
