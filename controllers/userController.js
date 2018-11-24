@@ -4,24 +4,24 @@ const Comments = require("../models/comment");
 const ejs_helpers = require("../public/js/ejs_helpers.js");
 
 module.exports = {
-	getUsers : (req, res) => {
-		User.find({})
-			.then((users) => res.render("users/index", {users: users}))
-			.catch((err) => {
-				console.log(err);
-				req.flash("error toast", "Unable to render users. Please try again later.");
-				res.render("users/index", {users: users});
-			});
+	getUsers : async (req, res) => {
+		try {
+			const users = await User.find({});
+			return res.render("users/index", {users: users});
+		} catch(err) {
+			req.flash("error toast", "Unable to render users. Please try again later.");
+			res.redirect("/");
+		}
 	},
-	getUser : (req, res) => {
-		User.findOne({username: req.params.id})
-			.populate("blogs")
-			.exec()
-			.then((results) => {res.render("users/show", {helpers: ejs_helpers, results: results})})
-			.catch((err) => {
-				console.log(err);
-				req.flash("error toast", "Unable to render user info. Please try again later.");
-				res.render("users/show", {helpers: ejs_helpers, results: results});
-			});
+	getUser : async (req, res) => {
+		try {
+			const results = await User.findById(req.params.id).populate("blogs");
+			if(results) return res.render("user/show", {helpers: ejs_helpers, results: results});
+			req.flash("error toast", "Unable to find this users. Please try again later.");
+			res.redirect("/");
+		} catch(err) {
+			req.flash("error toast", "Unable to render users. Please try again later.");
+			res.redirect("/");
+		}
 	}
 }
