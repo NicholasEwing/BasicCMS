@@ -32,7 +32,7 @@ module.exports = {
 	},
 	getBlog : async (req, res) => {
 		try {
-			const foundBlog = await Blog.findById(req.params.id);
+			let foundBlog = await Blog.findById(req.params.id).populate("comments");
 			if(foundBlog) return res.render("blogs/show", {blog: foundBlog});
 			res.redirect("/");
 		} catch(err) {
