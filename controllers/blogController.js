@@ -17,15 +17,16 @@ module.exports = {
 		res.render("blogs/new");
 	},
 	createBlog : async (req, res) => {
+		const {id, username} = req.user;
 		req.body.blog.body = req.sanitize(req.body.blog.body);
-
+		
 		try {
 			const newBlog = await Blog.create(req.body.blog);
-			newBlog.author.id = req.user._id;
-			newBlog.author.username = req.user.username;
+			newBlog.author.id = id;
+			newBlog.author.username = username;
 			await newBlog.save();
-			await User.findByIdAndUpdate(req.user._id, {$push: {blogs: newBlog._id}});
-			res.redirect("/blogs");
+			await User.findByIdAndUpdate(id, {$push: {blogs: newBlog._id}});
+			res.redirect("/");
 		} catch(err) {
 			req.flash("error toast", "Whoops! Couldn't create new blog.");
 		}
@@ -51,7 +52,7 @@ module.exports = {
 			res.redirect("/blogs"); 
 		}
 	},
-	updateBlog : async (req, res) => {
+	updateBlog : async (req, res) => { 
 		req.body.blog.body = req.sanitize(req.body.blog.body);
 
 		try {
