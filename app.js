@@ -19,10 +19,6 @@ let blogRoutes = require("./routes/blogs");
 let commentRoutes = require("./routes/comments");
 let userRoutes = require("./routes/users");
 
-// Seed the database
-seedDB = require("./seeds");
-// seedDB();
-
 const app = express();
 let port = process.env.PORT || 8080;
 
