@@ -1,14 +1,14 @@
-const flash 				= require("flash");
-const helmet 				= require("helmet");
-const express 				= require("express");
-const mongoose 				= require("mongoose");
-const passport 				= require("passport");
-const favicon 				= require("serve-favicon");
-const bodyParser 			= require("body-parser");
-const LocalStrategy 		= require("passport-local");
-const expressSession 		= require("express-session");
-const methodOverride 		= require("method-override");
-const expressSanitizer 		= require("express-sanitizer");
+const flash = require("flash");
+const helmet = require("helmet");
+const express = require("express");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const favicon = require("serve-favicon");
+const bodyParser = require("body-parser");
+const LocalStrategy = require("passport-local");
+const expressSession = require("express-session");
+const methodOverride = require("method-override");
+const expressSanitizer = require("express-sanitizer");
 const passportLocalMongoose = require("passport-local-mongoose");
 
 mongoose.Promise = Promise;
@@ -97,3 +97,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(port, () => console.log("Server started on port " + port));
+
+module.exports.app = app;
