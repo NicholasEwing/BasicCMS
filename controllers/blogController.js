@@ -6,26 +6,24 @@ const mongoose = require("mongoose");
 module.exports = {
 	getBlogs : async (req, res) => {
 		try {
-			const blogs = await Blog.find({});
+			const blogs = await Blog.find({});	
 			return res.render("blogs/index", {blogs: blogs});
 		} catch(err) {
 			req.flash("error toast", "Error retrieving blogs.");
-			res.redirect("/");
 		}
 	},
 	newBlogForm : (req, res) => {
 		res.render("blogs/new");
 	},
 	createBlog : async (req, res) => {
-		const {id, username} = req.user;
 		req.body.blog.body = req.sanitize(req.body.blog.body);
 		
 		try {
 			const newBlog = await Blog.create(req.body.blog);
-			newBlog.author.id = id;
-			newBlog.author.username = username;
+			newBlog.author.id = req.user.id;
+			newBlog.author.username = req.user.username;
 			await newBlog.save();
-			await User.findByIdAndUpdate(id, {$push: {blogs: newBlog._id}});
+			await User.findByIdAndUpdate(req.user.id, {$push: {blogs: newBlog._id}});
 			res.redirect("/");
 		} catch(err) {
 			req.flash("error toast", "Whoops! Couldn't create new blog.");
