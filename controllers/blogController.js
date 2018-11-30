@@ -70,7 +70,7 @@ module.exports = {
 		try {
 			const blog = await Blog.findById(req.params.id);
 			blog.remove();
-			await User.findOneAndUpdate(blog.author.id, {$pull: {blogs: blog._id}});
+			await User.findByIdAndUpdate(blog.author.id, {$pull: {blogs: blog._id}});
 			const comments = await Comment.find({_id: {$in: blog.comments}});
 			await User.updateMany({$pull: {comments: {$in: comments}}});
 			await Comment.deleteMany({blog: {id: mongoose.Types.ObjectId(req.params.id)}});
