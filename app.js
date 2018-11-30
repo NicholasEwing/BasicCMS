@@ -9,7 +9,6 @@ const LocalStrategy = require("passport-local");
 const expressSession = require("express-session");
 const methodOverride = require("method-override");
 const expressSanitizer = require("express-sanitizer");
-const passportLocalMongoose = require("passport-local-mongoose");
 
 mongoose.Promise = Promise;
 
@@ -26,7 +25,6 @@ let port = process.env.PORT || 8080;
 app.use(helmet());
 
 // Session / cookie settings
-let expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(expressSession({
 	secret: process.env.SESSION_SECRET,
 	name: "sessionId",
@@ -42,7 +40,7 @@ app.use(methodOverride("_method"));
 
 let path = require("path");
 app.use(express.static(path.join(__dirname, "/public")));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Enables express-sanitizer, must come after app.use(bodyParser).
@@ -59,7 +57,7 @@ app.use(flash());
 app.use((req, res, next) => {
 	res.locals.currentUser = req.user;
 	next();
-})
+});
 
 // Connect MongoDB
 let url = process.env.DATABASEURL || "mongodb://localhost/blogcms";
@@ -81,7 +79,7 @@ app.use("/blogs/:id/comments", commentRoutes);
 app.use("/users", userRoutes);
 
 // Handle 404 for html, json, and plain txt
-app.use((req, res, next) => {
+app.use((req, res) => {
 	res.status(404);
 
 	if(req.accepts("html")) {
@@ -93,7 +91,7 @@ app.use((req, res, next) => {
 		res.send({error: "Not found"});
 	}
 
-	res.type("txt").send("Not found")
+	res.type("txt").send("Not found");
 });
 
 app.listen(port, () => console.log("Server started on port " + port));

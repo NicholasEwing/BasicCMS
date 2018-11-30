@@ -15,7 +15,6 @@ module.exports = {
 	},
 	createComment : async (req, res) => {
 		try {
-			const blog = await Blog.findById(req.params.id);
 			const comment = await Comment.create(req.body.comment);
 			await Blog.findByIdAndUpdate(req.params.id, {$push : {comments: comment}});
 			await User.findByIdAndUpdate(req.user._id, {$push : {comments: comment}});
@@ -65,4 +64,4 @@ module.exports = {
 			res.redirect(`/blogs/${req.params.id}`);
 		}
 	}
-}
+};

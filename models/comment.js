@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let commentSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
 	text: String,
 	author: {
 		id: {
@@ -17,6 +17,6 @@ let commentSchema = new mongoose.Schema({
 	}
 });
 
-let Comment = mongoose.model("Comment", commentSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
 module.exports = Comment;

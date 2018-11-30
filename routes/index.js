@@ -42,8 +42,7 @@ router.post("/login", passport.authenticate("local", {
 	successReturnToOrRedirect: "/blogs",
 	failureRedirect: "/login",
 	failureFlash: true
-}), (req, res) => {
-});
+}));
 
 // logout logic
 router.get("/logout", (req, res) => {
@@ -54,6 +53,6 @@ router.get("/logout", (req, res) => {
 
 router.get("/footer", (req, res) => {
 	res.render("footer");
-})
+});
 
 module.exports = router;

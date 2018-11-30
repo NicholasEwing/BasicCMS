@@ -1,6 +1,4 @@
 const User = require("../models/user");
-const Blog = require("../models/blog");
-const Comments = require("../models/comment");
 const ejs_helpers = require("../public/js/ejs_helpers.js");
 
 module.exports = {
@@ -24,4 +22,4 @@ module.exports = {
 			res.redirect("/");
 		}
 	}
-}
+};

@@ -81,4 +81,4 @@ module.exports = {
 			res.redirect("/");
 		}
 	}
-}
+};
