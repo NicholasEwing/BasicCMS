@@ -68,11 +68,16 @@ module.exports = {
 	},
 	deleteBlog : async (req, res) => {
 		try {
+			// Find and remove blog
 			const blog = await Blog.findById(req.params.id);
 			blog.remove();
+			// Remove blog reference from author
 			await User.findByIdAndUpdate(blog.author.id, {$pull: {blogs: blog._id}});
+			// Find comments in blog
 			const comments = await Comment.find({_id: {$in: blog.comments}});
+			// Remove comment references from all authors
 			await User.updateMany({$pull: {comments: {$in: comments}}});
+			// Remove comments in blog
 			await Comment.deleteMany({blog: {id: mongoose.Types.ObjectId(req.params.id)}});
 			req.flash("success toast", "Blog removed.");
 			res.redirect("/");
