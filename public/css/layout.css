@@ -256,6 +256,28 @@ label {
 	font-size: 1.15rem;
 }
 
+/* Controls green check marks and red Xs for password requirements when registering*/
+
+#message .valid {
+	color: green;
+}
+
+#message .valid:before {
+	position: relative;
+	left: -35px;
+	content: "✔";
+}
+
+#message .invalid {
+	color: red;
+}
+
+#message .invalid:before {
+	position: relative;
+	left: -35px;
+	content: "✖";
+}
+
 /*Delete confirmation*/
 
 .delete-confirm {

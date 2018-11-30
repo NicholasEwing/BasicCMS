@@ -13,9 +13,9 @@ module.exports = {
 	},
 	getUser : async (req, res) => {
 		try {
-			const results = await User.findById(req.params.id).populate("blogs");
-			if(results) return res.render("user/show", {helpers: ejs_helpers, results: results});
-			req.flash("error toast", "Unable to find this users. Please try again later.");
+			const results = await User.findOne({username: req.params.id}).populate("blogs");
+			if(results) return res.render("users/show", {helpers: ejs_helpers, results: results});
+			req.flash("error toast", "Unable to find this user. Please try again later.");
 			res.redirect("/");
 		} catch(err) {
 			req.flash("error toast", "Unable to render users. Please try again later.");

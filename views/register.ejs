@@ -3,11 +3,44 @@
 <div class="container form-input" id="auth-form">
 	<h1 class="form-input-title">Create a New Account</h1>
 	<form action="/register" method="POST">
-		<input type="text" name="username" placeholder="Username" required>
-		<input type="password" id="password" name="password" placeholder="Password" required>
-		<input type="password" id="confirm_password" placeholder="Confirm password" onchange="matchPasswords(this)" required>
+		<input type="text"
+			name="username"
+			placeholder="Username"
+			pattern="^[a-zA-Z0-9_]{2,20}[a-zA-Z]+[0-9]*$"
+			title="Username must have 2 - 20 characters. No wildcards except underscores."
+			required>
+
+		<input type="password"
+			pattern="^((?!.*[\s])(?=.*[A-Z])(?=.*\d).{8,15})"
+			onfocus="displayReqs()"
+			onblur="hideReqs()"
+			onkeyup="validate()"
+			id="password"
+			name="password"
+			placeholder="Password"
+			required>
+
+		<input type="password"
+			pattern="^((?!.*[\s])(?=.*[A-Z])(?=.*\d).{8,15})"
+			onfocus="displayReqs()"
+			onblur="hideReqs()"
+			onkeyup="match(this)"
+			id="confirm-password"
+			placeholder="Confirm password"
+			required>
+
 		<input class="button" type="submit" value="Register">
 		<p><a href="/blogs/">Go Back</a></p>
+
+		<div class="container" id="message">
+			<p><strong>Password must contain the following:</strong></p>
+			<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+			<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+			<p id="number" class="invalid">A <b>number</b></p>
+			<p id="length" class="invalid">Minimum <b>8 characters</b></p>
+			<p id="match" class="invalid">Passwords must <b>match</b></p>
+		</div>
+
 	</form>
 </div>
 

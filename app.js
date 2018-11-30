@@ -12,14 +12,17 @@ const expressSanitizer = require("express-sanitizer");
 
 mongoose.Promise = Promise;
 
+// Models
+const User = require("./models/user");
+
 // Routes
-let indexRoutes = require("./routes/index");
-let blogRoutes = require("./routes/blogs");
-let commentRoutes = require("./routes/comments");
-let userRoutes = require("./routes/users");
+const indexRoutes = require("./routes/index");
+const blogRoutes = require("./routes/blogs");
+const commentRoutes = require("./routes/comments");
+const userRoutes = require("./routes/users");
 
 const app = express();
-let port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 // Header security
 app.use(helmet());
@@ -38,7 +41,7 @@ app.set("view engine", "ejs");
 // Allows for deleting via POST method
 app.use(methodOverride("_method"));
 
-let path = require("path");
+const path = require("path");
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -60,12 +63,9 @@ app.use((req, res, next) => {
 });
 
 // Connect MongoDB
-let url = process.env.DATABASEURL || "mongodb://localhost/blogcms";
+const url = process.env.DATABASEURL || "mongodb://localhost/blogcms";
 mongoose.set("useCreateIndex", true);
 mongoose.connect(url, {useNewUrlParser: true});
-
-// Models
-let User = require("./models/user");
 
 // Configure passport-local
 passport.use(new LocalStrategy(User.authenticate()));
@@ -96,4 +96,5 @@ app.use((req, res) => {
 
 app.listen(port, () => console.log("Server started on port " + port));
 
+// Export app for integration testing at some point
 module.exports.app = app;
