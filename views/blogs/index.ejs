@@ -1,7 +1,7 @@
 <%- include('../partials/header') -%>
 
 <% blogs.forEach((blog) => { %>
-	<div class="container featured-blog">
+	<div data-aos="fade" class="container featured-blog">
 		<div class="box">
 			<img src="<%= blog.image %>">
 		</div>
@@ -11,7 +11,7 @@
 			Created by: <%= blog.author.username %> on <%= blog.created.toLocaleDateString("en-US", {
 			weekday: "long", year: "numeric", month: "short", day: "numeric"}) %>
 		</p>
-		<a class="button" href="/blogs/<%=blog._id%>">Read More</a>
+		<a class="button" href="/blogs/<%=blog._id%>"><i class="fas fa-caret-right fa-sm"></i> Read More</a>
 	</div>
 <% }) %>
 
@@ -21,7 +21,7 @@
 		<h1>Looks like you don't have any blogs. Get started:</h1>
 	<% } %>
 	<form action="/blogs/new" method="GET">
-		<button class="button" id="new-blog-button">New Blog</button>
+		<button class="button" id="new-blog-button">+ Add New Blog</button>
 	</form>
 </div>
 

@@ -6,7 +6,7 @@
 
 	<h2>Blog posts:</h2>
 	<% results.blogs.forEach((blog) => {%>
-		<div class="container card">
+		<div data-aos="fade-down" class="container card blog-card">
 			<div class="box">
 				<img src= "<%= blog.image %>" >
 			</div>
@@ -15,7 +15,7 @@
 			<p>
 				Posted <%= helpers.timeSince(blog.created) %> ago
 			</p>
-			<a class="button" href="/blogs/<%=blog._id%>">Read More</a>
+			<a class="button" href="/blogs/<%=blog._id%>"><i class="fas fa-caret-right fa-sm"></i> Read More</a>
 		</div>
 	<% }); %>
 	</div>
