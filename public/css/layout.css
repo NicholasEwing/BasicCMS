@@ -271,6 +271,7 @@ header nav a {
 
 #comment-header {
 	margin: 0 auto;
+	margin-top: 2rem;
 	padding: 1.5rem;
 	width: 50%;
 }
@@ -337,7 +338,6 @@ label {
 #auth-form form p {
 	width: 30%;
 	margin: auto;
-	color: gray;
 }
 
 .form-input form p {
@@ -357,23 +357,43 @@ label {
 
 /* Controls green check marks and red Xs for password requirements when registering*/
 
+#message {
+	width: 35%;
+	overflow: hidden;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#message p {
+	text-align: left;
+	white-space: nowrap;
+}
+
+#message #help-text {
+	width: auto;
+	/*width: 80%;*/
+	/*white-space: nowrap;*/
+}
+
 #message .valid {
+	width: 80%;
 	color: green;
 }
 
 #message .valid:before {
 	position: relative;
-	left: -35px;
+	left: -5%;
 	content: "✔";
 }
 
 #message .invalid {
+	width: 80%;
 	color: red;
 }
 
 #message .invalid:before {
 	position: relative;
-	left: -35px;
+	left: -5%;
 	content: "✖";
 }
 
@@ -506,11 +526,18 @@ footer nav {
 		right: 0;
 	}
 
-	#auth-form form input {
+	#auth-form form input, #message {
 		float: none;
-		width: 50%;
 		height: auto;
 		text-align: center;
+	}
+
+	#auth-form form input {
+		width: 50%;
+	}
+
+	#message {
+		width: 100%;
 	}
 
 	.card {
@@ -531,6 +558,14 @@ footer nav {
 	header li {
 		padding: 0.25rem 0;
 	}
+
+	h1 {
+		font-size: 3vh;
+	}
+
+	#message p {
+		white-space: normal;
+	}
 }
 
 @media all and (max-width: 484px){
@@ -540,6 +575,10 @@ footer nav {
 	footer li {
 		display: block;
 		overflow: hidden;
+	}
+
+	h1 {
+		font-size: 3vh;
 	}
 
 	.toast span {

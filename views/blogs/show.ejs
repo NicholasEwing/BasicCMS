@@ -20,8 +20,8 @@
 
 	<p data-aos="fade-in" data-aos-delay="400" id="blog-body"><%= blog.body %></p>
 
-	<% if(currentUser && currentUser.isAdmin){ %>
 	<div class="admin-buttons">
+	<% if(currentUser && currentUser.isAdmin){ %>
 		<form action="/blogs/<%= blog._id %>/edit" method="GET">
 			<button class="button"><i class="fas fa-edit"></i> Edit Blog</button>
 		</form>
@@ -29,8 +29,8 @@
 		<form action="/blogs/<%= blog._id %>/delete" method="GET">
 			<button class="button"><i class="far fa-trash-alt"></i> Delete Blog</button>
 		</form>
-	</div>
 	<% } %>
+	</div>
 
 	<h2 data-aos="fade-up" id="comment-header"><strong>Comments:</strong></h2>
 
