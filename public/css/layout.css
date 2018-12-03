@@ -370,7 +370,9 @@ label {
 }
 
 #message #help-text {
+	position: relative;
 	width: auto;
+	left: 5%;
 	/*width: 80%;*/
 	/*white-space: nowrap;*/
 }
