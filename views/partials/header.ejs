@@ -17,18 +17,49 @@
 	<header>
 		<div class="container">
 			<div id="branding">
-				<h1><a href="/">Blogify.</a></h1>
+				<h1><a href="/">Blogify<span id="branding-b">.</span></a></h1>
 			</div>
 			<nav>
 				<ul>
-					<li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-					<li><a href="/users"><i class="fas fa-users"></i> Users</a></li>
+					<li>
+						<a href="/">
+							<i class="fas fa-home head-icon"></i>
+								Home
+						</a>
+					</li>
+					<li>
+						<a href="/users">
+							<i class="fas fa-users head-icon"></i>
+								Users
+							</span>
+							</a>
+					</li>
 					<% if(!currentUser) { %>
-						<li><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-						<li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
+						<li>
+							<a href="/login">
+								<i class="fas fa-sign-in-alt head-icon"></i>
+									Login
+							</a>
+						</li>
+						<li>
+							<a href="/register">
+								<i class="fas fa-user-plus head-icon"></i>
+									Register
+							</a>
+						</li>
 					<% } else { %>
-						<li><i class="fas fa-user-circle"></i> <a href="/users/<%=currentUser.username%>"><%= currentUser.username %></a></li>
-						<li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+						<li>
+							<a href="/users/<%=currentUser.username%>">
+								<i class="fas fa-user-circle head-icon"></i>
+									<%= currentUser.username %>
+							</a>
+						</li>
+						<li>
+							<a href="/logout">
+								<i class="fas fa-sign-out-alt head-icon"></i>
+								Logout
+							</a>
+						</li>
 					<% } %>
 				</ul>
 			</nav>

@@ -8,7 +8,9 @@
 		<h1><%= blog.title %></h1>
 		<p><%= blog.body.substring(0, 200) %>...</p>
 		<p>
-			Created by: <%= blog.author.username %> on <%= blog.created.toLocaleDateString("en-US", {
+			Created by: 
+				<a href="/users/<%= blog.author.username %>"><%= blog.author.username %></a>
+			on <%= blog.created.toLocaleDateString("en-US", {
 			weekday: "long", year: "numeric", month: "short", day: "numeric"}) %>
 		</p>
 		<a class="button" href="/blogs/<%=blog._id%>"><i class="fas fa-caret-right fa-sm"></i> Read More</a>

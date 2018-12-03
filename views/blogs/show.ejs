@@ -36,7 +36,7 @@
 
 	<% blog.comments.forEach((comment) => { %>
 		<div data-aos="fade-up" class="card">
-			<p><strong><i class="fas fa-comment"></i> <%= comment.author.username %>:</strong></p>
+			<p class="comment-author"><strong><i class="fas fa-comment"></i> <%= comment.author.username %>:</strong></p>
 			<p><%= comment.text %></p>
 
 			<div class="button-box">
