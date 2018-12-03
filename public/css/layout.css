@@ -540,7 +540,7 @@ footer nav {
 		width: 100%;
 	}
 
-	.card {
+	.card, .user-card {
 		min-width: 0;
 		width: 95%;
 		display: block;
