@@ -1,4 +1,4 @@
-# BasicCMS
+# Blogify
 
 [Click here to try a live demo!](https://blogify-by-nicholas-ewing.herokuapp.com/blogs)
 
